@@ -1,0 +1,27 @@
+.header{
+    background-color: #fff;
+    padding: 0.4rem;
+    overflow: hidden;   /*超过就不显示*/
+    height: 3.2rem;
+    border-bottom:1px solid #eee;
+}
+.header_logo{
+    color:#1e90ff;
+    font-size: 1.4rem;
+    text-align: left;/*文字对齐方式*/
+}
+.header_txt{
+    font-size: 0.6rem;
+    color: #999;
+    display: inline-block;/*在一行*/
+    padding-left: 0.3rem;/*左侧距离*/
+}
+.ant_meu{
+    line-height: 2.8rem;
+}
+.ant_menu_item{
+    font-size:1rem !important;/*!important以这个样式优先*/
+    padding-left:1rem;
+    padding-right:1rem;
+    color: #999 !important;
+}

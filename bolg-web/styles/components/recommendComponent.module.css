@@ -1,0 +1,51 @@
+.recommend_div {
+    border: 1px solid #e8e8e8;
+    margin-bottom: .5rem;
+    border-radius: .5rem;
+    background-color: #FFF;
+}
+.recommend_title {
+    margin-left: 1rem;
+    font-size: 1.1rem;
+    padding-top: 1rem;
+}
+
+.recommend_title span {
+    font-size: .8rem;
+    float: right;
+    color: #1890ff;
+    margin-top: .6rem;
+}
+.recommend_rightOutlined {
+    size: 3rem;
+    margin-top: .25rem !important;
+    padding-right: 1rem;
+}
+
+.recommend_hr {
+    border: 1px solid #f0f0f0;
+}
+
+.recommend_content {
+    margin-left: .5rem;
+}
+
+.recommend_content_div {
+    margin-right: 1%;
+    width: 24%;
+    display:inline-block;
+}
+
+.recommend_content_text{
+    padding-top: .3rem;
+    /* 强制文字一行内显示 */
+    white-space: nowrap;
+    /* 超出部分隐藏 */
+    overflow: hidden;
+    /* 用省略号替代超出部分 */
+    text-overflow: ellipsis;
+    color: #888;
+}
+.recommend_content_img img {
+    border-radius: .4rem;
+}

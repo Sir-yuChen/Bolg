@@ -1,0 +1,31 @@
+
+.author_avatar {
+    padding-left: 5.5rem;
+}
+.author_name{
+    padding: 1rem;
+    color: rgb(154, 185, 250);
+    font-size: 1.2rem;
+    padding-left: 7.5rem;
+}
+.author_introduce{
+    padding-left:  1rem;
+    padding-right: 1rem;
+    text-align: center;
+
+}
+.author_communicate_div{
+    margin-left: 3.2rem;
+}
+
+.author_communicate{    
+    padding: .5rem
+}
+.author_div {
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+    /* margin-top: -.2rem; */
+    background-color: #fff;
+    border: 1px solid #cce4fb;
+    border-radius: .5rem
+}

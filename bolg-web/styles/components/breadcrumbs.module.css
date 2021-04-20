@@ -1,0 +1,11 @@
+.breadcrumbCss_div {
+    background-color: #e1f0ff;
+    height: 2rem;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+.breadcrumbCss_breadcrumb {
+    font-size: 14px;
+    margin-left: .5rem;
+    line-height: 2rem;
+}

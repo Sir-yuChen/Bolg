@@ -1,0 +1,26 @@
+.article_header{
+    font-size: 1.2rem;
+}
+
+.article_title{
+    color: rgb(78, 124, 223);
+    font-size: 1.4rem;
+    height: 2.5rem;
+}
+
+.article_icon{
+    opacity: .7;
+}
+
+.article_icon_span{
+    padding: 2rem;
+    padding-inline-start: 0rem;
+}
+
+.article_context{
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+.article_icon_span_numb{
+    color: #f0732e;
+}

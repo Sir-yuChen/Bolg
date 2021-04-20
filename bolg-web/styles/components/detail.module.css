@@ -1,0 +1,23 @@
+.details_div {
+    border: 1px solid #e8e8e8;
+    border-radius: .5rem;
+    background-color: #FFF;
+}
+.details_title {
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.details_icon {
+   text-align: center;
+   color: #ccc;
+}
+
+.details_icon_span{
+    padding: 1rem;
+}
+
+.details_markdownContent {
+    padding: 1.5rem;
+}

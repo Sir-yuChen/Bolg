@@ -1,0 +1,22 @@
+.navigation_div {
+    
+}
+
+.navigation_title_div {
+    margin-top: .5rem;
+    border: 1px solid #cce4fb;
+    background-color: #fff;
+    border-radius: .5rem
+}
+
+.navigation_content {
+    font-size: 12px !important;
+}
+
+.navigation_content_div{
+    margin-top: .3rem;
+    background-color: #fff;
+    border: 1px solid #cce4fb;
+    border-radius: .5rem;
+    /* color: #595959 !important; */
+}

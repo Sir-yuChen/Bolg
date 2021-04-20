@@ -1,0 +1,22 @@
+.learningPath{
+    padding-left: .5rem;
+}
+
+.learningPath_title {
+    text-align: center;
+    font-size: .8rem;
+}
+
+.learningPath_list_title{
+    font-size: 1rem;
+    color: #888 !important;
+}
+
+.learningPath_list_type{
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+.rightOutlined{
+    color: #1890ff;
+}
