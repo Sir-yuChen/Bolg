@@ -9,7 +9,6 @@
 // };
 
 exports.mysql = {
-   // mysql 的开启配置，已经库的位置
    enable : true,
    package : 'egg-mysql'
 }
