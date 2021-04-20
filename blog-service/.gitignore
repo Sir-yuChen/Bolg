@@ -1,3 +1,4 @@
+.history/
 logs/
 npm-debug.log
 yarn-error.log
@@ -12,4 +13,3 @@ run/
 *.un~
 typings/
 .nyc_output/
-.history/

@@ -22,7 +22,7 @@ module.exports = appInfo => {
   const userConfig = {
     // myAppName: 'egg',
   };
-  // mysql的连接配置  host port 用户名  密码  数据库名  
+  // mysql的连接配置  host port 用户名  密码  数据库名     
   config.mysql = {
     // database configuration
     client: {

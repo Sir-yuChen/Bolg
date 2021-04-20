@@ -8,6 +8,7 @@ class HomeController extends Controller {
     let  result = await this.app.mysql.get("blog_content",{})//表名 条件
     ctx.body = result
     //mysql连接测试
+    
   }
 }
 
