@@ -15,19 +15,22 @@ const LearningPath = () => {
 
     return (
         <div className={`${LearningPathCss.learningPath}`} >
-            <Divider>学习路线</Divider>
+            <div>
+                <Divider>学习路线</Divider>
+            </div>
             <List
                 dataSource = {learningPath}
                 renderItem = {item=>(
                     <List.Item>
-                        <span className={`${LearningPathCss.learningPath_list_title}`}>
-                            <BookOutlined />
-                            {item.title}
-                        </span>
-                        <span  className={`${LearningPathCss.learningPath_list_type}`}>
-                            {item.type}
-                            <RightOutlined className={`${LearningPathCss.rightOutlined}`} />
-                        </span>
+                        <a href ='' className={`${LearningPathCss.learningPath_a}`}>
+                            <span className={`${LearningPathCss.learningPath_list_title}`}>
+                                <BookOutlined />
+                                {item.title}
+                            </span>
+                            <span  className={`${LearningPathCss.learningPath_list_type}`}>
+                                {item.type} <RightOutlined  className={`${LearningPathCss.rightOutlined}`} />
+                            </span>
+                        </a>
                     </List.Item>
                 )} 
             />

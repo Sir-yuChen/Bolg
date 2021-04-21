@@ -9,6 +9,8 @@ import LearningPath from '../components/LearningPath'
 
 import {Row,Col } from 'antd'
 
+//getInitialProps仅适用于Next.js中的Pages，所以子组件的正确方法是componentDidMount使用setState而不是props。
+
 const Index = () => {
 
   return(

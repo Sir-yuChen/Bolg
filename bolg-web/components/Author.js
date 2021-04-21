@@ -1,11 +1,27 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import AuthorCss from '../styles/components/author.module.css'
+import {MYSQL_URL} from '../components/StaticConst'
 
 
 import {Avatar,Divider} from 'antd'
 import { AntDesignOutlined,GithubOutlined,WechatOutlined,QqOutlined,DingdingOutlined } from '@ant-design/icons';
+import axios from 'axios'
+
 
 function Author() {
+
+    const [authorInfo ,setAuthorInfo] = useState({})
+
+    useEffect(
+        async ()=>{
+            axios(MYSQL_URL+'/default/getBlogInfo').then(
+                (res) => {
+                    console.log(res.data.data[0])
+                    setAuthorInfo(res.data.data[0])
+                }
+            )
+        }
+    ,[])
 
     return (
         <div  className={`${AuthorCss.author_div}`} >
@@ -14,17 +30,18 @@ function Author() {
                     <Avatar
                         size={120}
                         icon={<AntDesignOutlined />}
-                    // src="http://blogimages.jspang.com/blogtouxiang1.jpg"
+                        src={authorInfo.user_photo}
+                        // src="https://img1.baidu.com/it/u=2491306664,177039371&fm=26&fmt=auto&gp=0.jpg"
                         alt="头像加载失败"
                     />
                 </div>
                 <div className={`${AuthorCss.author_name}`}>
-                    <span >博客园</span>
+                    <span >{authorInfo.user_name}</span>
                 </div>
             </div>
             <div className={`${AuthorCss.author_introduce}`}>
                 <span>
-                因为美好的东西都是免费的，比如水、阳光和空气，所以本站视频全部免费。
+                    {authorInfo.motto}
                 </span>
             </div>
             <Divider>社交账号</Divider>

@@ -18,9 +18,15 @@
 }
 
 .article_context{
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     font-size: 1rem;
 }
 .article_icon_span_numb{
     color: #f0732e;
+}
+
+.article_context a {
+    float:right;
+    margin-top: 2rem;
+    font-size: .8rem;
 }

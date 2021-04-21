@@ -27,21 +27,34 @@ module.exports = appInfo => {
     // database configuration
     client: {
       // host
-      host: 'mysql.com',
+      host: 'localhost',
       // port
       port: '3306',
       // username
-      user: 'test_user',
+      user: 'root',
       // password
-      password: 'test_password',
+      password: '123456',
       // database
-      database: 'test',    
+      database: 'blog',    
     },
     // load into app, default is open
     app: true,
     // load into agent, default is close
     agent: false,
   };
+
+
+　config.security = {
+　　　csrf: {
+　　　　　enable: false
+　　　},
+　　　domainWhiteList: [ '*' ]
+  };
+  config.cors = {
+      origin: '*',
+      allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+  };
+
   return {
     ...config,
     ...userConfig,
