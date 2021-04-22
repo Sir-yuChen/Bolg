@@ -1,0 +1,16 @@
+.background_div {
+    background-color: #fff;
+    border: 1px solid #cce4fb;
+    border-radius: .5rem;
+    margin-top: .5rem;
+}
+
+.list {
+    text-align: center;
+}
+
+.item_div img {
+    padding: .3rem;
+    /* background-color: black; */
+    border-radius: 1rem;
+}

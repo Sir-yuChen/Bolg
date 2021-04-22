@@ -50,7 +50,7 @@ const RecommendComponent = () => {
                                 {
                                     recommendListItem.componentContent.map(
                                         content => (
-                                            <div  key={content.article_path}  className={`${RecommendComponentCss.recommend_content_div}`}>
+                                            <div   className={`${RecommendComponentCss.recommend_content_div}`}>
                                                 <a href={content.article_path}>
                                                     <div className={`${RecommendComponentCss.recommend_content_img}`}>
                                                         <img src={content.article_img} width='100%'/>

@@ -11,6 +11,12 @@
 
 .navigation_content {
     font-size: 12px !important;
+    /* 强制文字一行内显示 */
+    white-space: nowrap;
+    /* 超出部分隐藏 */
+    overflow: hidden;
+    /* 用省略号替代超出部分 */
+    text-overflow: ellipsis;
 }
 
 .navigation_content_div{

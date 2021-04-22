@@ -1,7 +1,7 @@
 .learningPath{
     padding-left: .5rem;
     background-color: #FFF;
-    border: 1px solid #e8e8e8;
+    border: 1px solid #cce4fb;
     border-radius: .5rem;
     margin-top: .5rem;
 }
@@ -19,15 +19,18 @@
 .learningPath_a {
     position: relative;
     /* 定位绝对位置 */
+    width: 100%;
+    /* 绝对位置，容器必须指定宽度 */
 }
 
 .learningPath_list_type{
+    /* background-color: #1890ff; */
     /* 相对位置，靠右 */
     position: absolute;
     right: 1rem;
-
     color: #ccc;
     font-size: 0.8rem;
+    margin-top: .3rem;
 }
 
 .rightOutlined{

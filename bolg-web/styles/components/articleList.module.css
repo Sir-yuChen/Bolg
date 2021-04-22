@@ -1,3 +1,11 @@
+.article_div {
+    /* border: 1px solid #252220; */
+    position: relative;
+    /* 定位绝对位置 */
+    width: 100%;
+    /* 绝对位置，容器必须指定宽度 */
+}
+
 .article_header{
     font-size: 1.2rem;
 }
@@ -6,6 +14,7 @@
     color: rgb(78, 124, 223);
     font-size: 1.4rem;
     height: 2.5rem;
+    /* background-color: #f0732e; */
 }
 
 .article_icon{
@@ -25,8 +34,11 @@
     color: #f0732e;
 }
 
-.article_context a {
-    float:right;
-    margin-top: 2rem;
+.article_context_span {
+    /* background-color: rgb(160, 20, 20); */
+    /* float:right; */
+   margin-top: -1rem;
     font-size: .8rem;
+    position: absolute;
+    right: 0rem;
 }

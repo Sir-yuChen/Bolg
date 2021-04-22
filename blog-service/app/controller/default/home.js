@@ -20,6 +20,7 @@ class HomeController extends Controller {
                 'a.introduce,'+
                 'a.video_number, '+
                 'a.view_count, '+
+                'a.article_path, '+
                 'b.type_name, '+
                 "DATE_FORMAT(a.releaseTime,'%Y-%m-%d %H:%i:%s' ) as releaseTime "+
               'FROM '+
@@ -39,18 +40,37 @@ class HomeController extends Controller {
   //查博主个人信息
   async getBlogInfo(){
   
-   let sql= 'SELECT '+
+    let sql= 'SELECT '+
               '* '+
             'FROM '+
               'blog_user b '+
             'WHERE '+
               'b.STATUS = 1'
-        const res = await this.app.mysql.query(sql)
-        this.ctx.body = {
-          data:res
-        }
+    const res = await this.app.mysql.query(sql)
+    this.ctx.body = {
+      data:res
+    }
   }
 
+  //查询学习路线
+  async getLearningPath(){
+    
+    let sql = 'SELECT '+
+              'b.path_name, '+
+              'b.article_uuid, '+
+              'b.subtitle,  '+
+              'a.article_path  '+
+            'FROM '+
+              'blog_learningpath b,  '+
+              'blog_article a  '+
+            'WHERE '+
+              'b.article_uuid = a.article_uuid  '+ 
+              ' AND b.STATUS = 1 '
+    const res = await this.app.mysql.query(sql)
+    this.ctx.body = {
+      data:res
+    }
+  }
 
 }
 

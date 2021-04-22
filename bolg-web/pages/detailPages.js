@@ -15,6 +15,8 @@ function detailPages() {
         <div className="body">
             <Head>
                 <title>文章详情页</title>
+                <meta name="referrer" content="no-referrer" />
+                {/* 防止markdown解析后无法加载远程图片403问题    远程服务做了防盗处理 */}
             </Head>
             <Header/>
             <Row className="comm-main" type="flex" justify="center">

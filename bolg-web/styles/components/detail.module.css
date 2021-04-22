@@ -21,3 +21,7 @@
 .details_markdownContent {
     padding: 1.5rem;
 }
+
+.details_markdownContent img {
+    width: 100%;
+}

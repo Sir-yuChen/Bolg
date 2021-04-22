@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import AdvertCss from '../styles/components/advertCss.module.css'
 
 import {List} from 'antd'
 function Advert() {
@@ -28,15 +29,17 @@ function Advert() {
     )   
 
     return (
-        <div>
+        <div  className={`${AdvertCss.background_div}`}>
             <List
+                className={`${AdvertCss.list}`}
                 header={advertList.headline}
                 dataSource={advertList.dataList}
                 renderItem={item=>(
                     <List.Item>
-                        <div>
-                            {item.title}
-                            <img src={item.playbill} width="100%" />
+                        <div className={`${AdvertCss.item_div}`}>
+                            <a href=''>
+                                <img src={item.playbill} width="100%" />
+                            </a>
                         </div>
                     </List.Item>
                 )}
