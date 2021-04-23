@@ -3,14 +3,17 @@
     border: 1px solid #cce4fb;
     border-radius: .5rem;
     margin-top: .5rem;
-}
+    padding: .5rem;
 
-.list {
-    text-align: center;
 }
 
 .item_div img {
     padding: .3rem;
     /* background-color: black; */
     border-radius: 1rem;
+}
+
+.item_div hr {
+    opacity: .5;
+    color: #fff;
 }

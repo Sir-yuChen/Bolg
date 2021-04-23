@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
-import AdvertCss from '../styles/components/advertCss.module.css'
+import AdvertCss from '../styles/components/advert.module.css'
 
-import {List} from 'antd'
+import {Divider} from 'antd'
+
 function Advert() {
 
     const [advertList,setAdvertList]  = useState(
@@ -30,20 +31,21 @@ function Advert() {
 
     return (
         <div  className={`${AdvertCss.background_div}`}>
-            <List
-                className={`${AdvertCss.list}`}
-                header={advertList.headline}
-                dataSource={advertList.dataList}
-                renderItem={item=>(
-                    <List.Item>
+            <div>
+                <Divider>{advertList.headline}</Divider> 
+            </div>
+            {
+                advertList.dataList.map(
+                    item => (
                         <div className={`${AdvertCss.item_div}`}>
                             <a href=''>
                                 <img src={item.playbill} width="100%" />
+                                <hr />
                             </a>
                         </div>
-                    </List.Item>
-                )}
-            />
+                    )
+                )
+            }
         </div>
     )
 }
