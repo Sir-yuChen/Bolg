@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import AuthorCss from '../styles/components/author.module.css'
-import {MYSQL_URL} from '../components/StaticConst'
-
+import  servicePath  from '../config/apiUrl'
 
 import {Avatar,Divider} from 'antd'
 import { AntDesignOutlined,GithubOutlined,WechatOutlined,QqOutlined,DingdingOutlined } from '@ant-design/icons';
@@ -14,7 +13,7 @@ function Author() {
 
     useEffect(
         async ()=>{
-            axios(MYSQL_URL+'/default/getBlogInfo').then(
+            axios(servicePath.getBlogInfo ).then(
                 (res) => {
                     console.log(res.data.data[0])
                     setAuthorInfo(res.data.data[0])

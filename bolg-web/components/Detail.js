@@ -1,7 +1,7 @@
 import React from 'react'
 import DetailCss from '../styles/components/detail.module.css'
-// import ReactMarkdown from 'react-markdown'
 import Breadcrumbs from '../components/Breadcrumbs'
+
 import marked from 'marked'
 import hljs from "highlight.js";
 import 'highlight.js/styles/monokai-sublime.css';

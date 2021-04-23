@@ -71,7 +71,40 @@ class HomeController extends Controller {
       data:res
     }
   }
+  //查询顶部标题栏信息
+  async getHeaderIndfo(){
+  
+  let sql = 'SELECT '+
+            't.type_name, '+
+            't.type_path, '+
+            'i.type, '+
+            't.keyName  '+
+            'FROM '+
+              'blog_article_type AS t , '+
+              'blog_icon AS i  '+
+            'WHERE '+
+              't.STATUS = 1 '+
+              'AND t.type_site = "header" '+
+              'AND t.type_icon = i.icon_uuid '+
+              'ORDER BY '+
+                't.orders '
 
+    const res = await this.app.mysql.query(sql)
+    this.ctx.body = {
+      data:res
+    }
+  }
+  //查图标
+  async getIconObj(){
+    const { ctx } = this;
+    // let sql = 'SELECT * FROM blog_icon b WHERE b.site ='+"'"+ctx.query.site+"'"
+    let sql =  'SELECT JSON_OBJECTAGG(b.icon_name, b.type) as iconKV FROM blog_icon b WHERE b.site ='+"'"+ctx.query.site+"'"
+    const res = await this.app.mysql.query(sql)
+    // console.log("---------->>>>",res[0].iconKV)
+    ctx.body = {
+      data:res
+    }
+  }
 }
 
 module.exports = HomeController;

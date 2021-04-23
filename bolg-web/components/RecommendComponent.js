@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import RecommendComponentCss from '../styles/components/recommendComponent.module.css'
 
-import {List } from 'antd'
 import {DoubleRightOutlined} from '@ant-design/icons';
 
 

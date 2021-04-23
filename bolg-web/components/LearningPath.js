@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import LearningPathCss from '../styles/components/learningPath.module.css'
-import {MYSQL_URL} from './StaticConst'
+import  servicePath from "../config/apiUrl";
 
 import {List,Divider} from 'antd'
 import {BookOutlined,RightOutlined } from '@ant-design/icons';
@@ -12,7 +12,7 @@ const LearningPath = () => {
 
     useEffect(
        async () => {
-            axios(MYSQL_URL+'/default/getLearningPath').then(
+            axios(servicePath.getLearningPath).then(
                 (res)=>{
                     console.log("学习路线远程数据：",res.data.data)
                     setLearningPath(res.data.data)

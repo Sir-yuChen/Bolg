@@ -4,5 +4,7 @@ module.exports = app => {
     router.get('/default/getArticleList', controller.default.home.getArticleList);
     router.get('/default/getBlogInfo', controller.default.home.getBlogInfo);
     router.get('/default/getLearningPath', controller.default.home.getLearningPath);
+    router.get('/default/getHeaderIndfo', controller.default.home.getHeaderIndfo);
+    router.get('/default/getIconObj', controller.default.home.getIconObj);
   };
   
