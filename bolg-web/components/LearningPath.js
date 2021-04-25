@@ -3,12 +3,18 @@ import LearningPathCss from '../styles/components/learningPath.module.css'
 import  servicePath from "../config/apiUrl";
 
 import {List,Divider} from 'antd'
-import {BookOutlined,RightOutlined } from '@ant-design/icons';
+import {ICON_URL_JS} from  '../config/iconUrl'
+import {createFromIconfontCN} from '@ant-design/icons';
 import axios from 'axios'
 
 const LearningPath = () => {
     
     const [learningPath,setLearningPath] = useState([])
+    const [iconList ,setIconList] = useState({})
+
+    const IconFont = createFromIconfontCN({
+        scriptUrl: ICON_URL_JS,
+      });
 
     useEffect(
        async () => {
@@ -18,6 +24,12 @@ const LearningPath = () => {
                     setLearningPath(res.data.data)
                 }
             )
+            axios.get( servicePath.getIconObj,{params:{site:"learningPath"}}).then(
+                (res) => {
+                    setIconList(JSON.parse( res.data.data[0].iconKV))
+                    // console.log("--data->",res.data.data[0].iconKV)
+                }
+            ) 
        }
     ,[])
 
@@ -32,11 +44,11 @@ const LearningPath = () => {
                     <List.Item>
                         <a href ={item.article_path} className={`${LearningPathCss.learningPath_a}`}>
                             <span className={`${LearningPathCss.learningPath_list_title}`}>
-                                <BookOutlined />
+                                <IconFont type={iconList.explain}/>
                                 {item.path_name}
                             </span>
                             <span  className={`${LearningPathCss.learningPath_list_type}`}>
-                                {item.subtitle} <RightOutlined  className={`${LearningPathCss.rightOutlined}`} />
+                                {item.subtitle} <IconFont type={iconList.rightArrow} className={`${LearningPathCss.rightOutlined}`} />
                             </span>
                         </a>
                     </List.Item>

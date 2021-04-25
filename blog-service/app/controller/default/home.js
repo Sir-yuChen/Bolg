@@ -105,6 +105,17 @@ class HomeController extends Controller {
       data:res
     }
   }
+  //查文章详情
+  async getArticleById(){
+    const { ctx } = this;
+
+    let sql = '' 
+    const res = await this.app.mysql.query(sql)
+    console.log("---------->>>>",res)
+    ctx.body = {
+      data:res
+    }
+  }
 }
 
 module.exports = HomeController;

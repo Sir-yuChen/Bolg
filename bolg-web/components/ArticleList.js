@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import ArticleListCss from '../styles/components/articleList.module.css'
 import  servicePath  from '../config/apiUrl'
 import {ICON_URL_JS} from  '../config/iconUrl'
+import Link from 'next/link'
+import Router from 'next/router'
 
 
 import { List } from 'antd'
@@ -21,18 +23,19 @@ const ArticleList = () => {
    const [articleList,setArticleList] = useState([{}])
    const [iconList,setIconList] = useState({})
 
-    useEffect(  ()=>{
+    useEffect( async ()=>{
         axios.get( servicePath.getArticleList).then(
             (res)=>{setArticleList(res.data.data) }
         ) 
-
         axios.get( servicePath.getIconObj,{params:{site:"articleList"}}).then(
             (res) => {
-                setIconList(res.data.data[0].iconKV)// TODO 数据赋值失败
-                console.log("--->",iconList)
+                setIconList(JSON.parse( res.data.data[0].iconKV))
+                // console.log("--data->",res.data.data[0].iconKV)
             }
         )  
     },[])
+
+   
 
     const renderer = new marked.Renderer(); 
     marked.setOptions({
@@ -60,37 +63,40 @@ const ArticleList = () => {
                 renderItem = { (item,index)=>{
                     return(
                         <List.Item>
-                           <div className={`${ArticleListCss.article_div}`}>
-                            <a href={item.article_path }>
-                                    <div className={`${ArticleListCss.article_title}`}>
-                                        {item.article_title}
-                                    </div>
-                                </a>
-                                <div className={`${ArticleListCss.article_icon}`}>
-                                    <span className={`${ArticleListCss.article_icon_span}`}>
-                                        <IconFont type={iconList.releaseTime}/>
-                                        {item.releaseTime}
-                                    </span>
-                                    <span  className={`${ArticleListCss.article_icon_span}`}>
-                                        <IconFont type={iconList.type_name}/>
-                                        {item.type_name}
-                                    </span>
-                                    <span  className={`${ArticleListCss.article_icon_span ,ArticleListCss.article_icon_span_numb}`}>
-                                        <IconFont type={iconList.view_count}/>
-                                        {item.view_count} 人
-                                    </span> 
-                                </div>
-                                <div className={`${ArticleListCss.article_context}`}>
-                                    <span  dangerouslySetInnerHTML={{__html: marked(articleList[index].introduce === undefined ? '':articleList[index].introduce) }}></span>
-                                        <a href={item.article_path}>
-                                            <div  className={`${ArticleListCss.article_context_span}`}>
-                                                <IconFont type={iconList.view_full_text_front}/>  查看全文
-                                                <IconFont type={iconList.view_full_text_later}/> 
+                            
+                            <div className={`${ArticleListCss.article_div}`}>
+                                    <Link  href={{pathname:'/detailPages',query:{article_uuid:item.article_uuid}}}>
+                                        <a>
+                                            <div className={`${ArticleListCss.article_title}`} >
+                                                {item.article_title}
                                             </div>
                                         </a>
-                                </div>
-                           </div>
-                        </List.Item>
+                                    </Link>
+                                    <div className={`${ArticleListCss.article_icon}`}>
+                                        <span className={`${ArticleListCss.article_icon_span}`}>
+                                            <IconFont type={iconList.releaseTime}/>
+                                            {item.releaseTime}
+                                        </span>
+                                        <span  className={`${ArticleListCss.article_icon_span}`}>
+                                            <IconFont type={iconList.type_name}/>
+                                            {item.type_name}
+                                        </span>
+                                        <span  className={`${ArticleListCss.article_icon_span ,ArticleListCss.article_icon_span_numb}`}>
+                                            <IconFont type={iconList.view_count}/>
+                                            {item.view_count} 人
+                                        </span> 
+                                    </div>
+                                    <div className={`${ArticleListCss.article_context}`}>
+                                        <span  dangerouslySetInnerHTML={{__html: marked(articleList[index].introduce === undefined ? '':articleList[index].introduce) }}></span>
+                                            <a href={item.article_path}>
+                                                <div  className={`${ArticleListCss.article_context_span}`}>
+                                                    <IconFont type={iconList.view_full_text_front}/>  查看全文
+                                                    <IconFont type={iconList.view_full_text_later}/> 
+                                                </div>
+                                            </a>
+                                    </div>
+                            </div>
+                    </List.Item>
                     )
                 }}
             />

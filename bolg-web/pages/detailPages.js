@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Head from 'next/head'
 import Header from '../components/Header'
 import Author from '../components/Author'
@@ -10,7 +10,10 @@ import RecommendComponent from '../components/RecommendComponent'
 
 import {Row,Col } from 'antd'
 
-function detailPages() {
+
+const  detailPages = () => {
+
+    
     return (
         <div className="body">
             <Head>
@@ -38,5 +41,7 @@ function detailPages() {
         </div>
     )
 }
+
+
 
 export default detailPages

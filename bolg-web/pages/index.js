@@ -6,12 +6,17 @@ import Author from '../components/Author'
 import Advert from '../components/Advert'
 import Footer from '../components/Footer'
 import LearningPath from '../components/LearningPath'
+import Link from 'next/link'
+import Router from 'next/router'
+
 
 import {Row,Col } from 'antd'
 
-//getInitialProps仅适用于Next.js中的Pages，所以子组件的正确方法是componentDidMount使用setState而不是props。
+
+//getInitialProps仅适用于next.js中的Pages，所以子组件的正确方法是componentDidMount使用setState而不是props。
 
 const Index = () => {
+
 
   return(
     <div className="body">

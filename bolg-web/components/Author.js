@@ -3,13 +3,19 @@ import AuthorCss from '../styles/components/author.module.css'
 import  servicePath  from '../config/apiUrl'
 
 import {Avatar,Divider} from 'antd'
-import { AntDesignOutlined,GithubOutlined,WechatOutlined,QqOutlined,DingdingOutlined } from '@ant-design/icons';
+import {ICON_URL_JS} from  '../config/iconUrl'
+import {createFromIconfontCN ,AntDesignOutlined} from '@ant-design/icons';
 import axios from 'axios'
 
 
 function Author() {
 
     const [authorInfo ,setAuthorInfo] = useState({})
+    const [iconList ,setIconList] = useState({})
+
+    const IconFont = createFromIconfontCN({
+        scriptUrl: ICON_URL_JS,
+      });
 
     useEffect(
         async ()=>{
@@ -19,6 +25,12 @@ function Author() {
                     setAuthorInfo(res.data.data[0])
                 }
             )
+            axios.get( servicePath.getIconObj,{params:{site:"author"}}).then(
+                (res) => {
+                    setIconList(JSON.parse( res.data.data[0].iconKV))
+                    // console.log("--data->",res.data.data[0].iconKV)
+                }
+            )  
         }
     ,[])
 
@@ -46,16 +58,16 @@ function Author() {
             <Divider>社交账号</Divider>
             <div className={`${AuthorCss.author_communicate_div}`}>
                 <span className={`${AuthorCss.author_communicate}`}>
-                    <Avatar size={35} icon={<GithubOutlined />}/>
+                    <Avatar size={35} icon={ <IconFont type={iconList.githubOutlined}/>}/>
                 </span>
                 <span className={`${AuthorCss.author_communicate}`}>
-                    <Avatar size={35} icon={<WechatOutlined />}/>
+                    <Avatar size={35} icon={ <IconFont type={iconList.wechatOutlined}/>}/>
                 </span>
                 <span className={`${AuthorCss.author_communicate}`}>
-                    <Avatar size={35} icon={<QqOutlined />}/>
+                    <Avatar size={35} icon={<IconFont type={iconList.qqOutlined}/>}/>
                 </span>
                 <span className={`${AuthorCss.author_communicate}`}>
-                    <Avatar size={35} icon={<DingdingOutlined />}/>
+                    <Avatar size={35} icon={<IconFont type={iconList.dingdingOutlined}/>}/>
                 </span>
             </div>
         </div>
