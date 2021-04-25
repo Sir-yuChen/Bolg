@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 22/04/2021 18:09:32
+ Date: 23/04/2021 18:14:22
 */
 
 SET NAMES utf8mb4;
@@ -58,15 +58,53 @@ CREATE TABLE `blog_article_type`  (
   `type_uuid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '文章类型唯一UUID',
   `type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '类型名称',
   `type_creatTime` date NOT NULL COMMENT '类型创建时间',
+  `type_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '类型地址',
+  `type_icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标',
+  `type_site` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '当前类型的页面展示位置',
+  `keyName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` int(0) NULL DEFAULT NULL COMMENT '当前状态 1正常',
+  `orders` int(0) NULL DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of blog_article_type
 -- ----------------------------
-INSERT INTO `blog_article_type` VALUES (1, '85756ds4145d', '视频教程', '2021-04-21');
-INSERT INTO `blog_article_type` VALUES (2, '4fs4f1gd4dd5sad', '软技能', '2021-04-20');
-INSERT INTO `blog_article_type` VALUES (3, '85756ds4s145dad', '逼逼叨叨', '2021-04-02');
+INSERT INTO `blog_article_type` VALUES (1, '85756ds4145d', '视频教程', '2021-04-21', '/video', 'ads54d4a8d4sd48', 'header', 'video', 1, 2);
+INSERT INTO `blog_article_type` VALUES (2, '4fs4f1gd4dd5sad', '软技能', '2021-04-20', '/skill', '5sad465sd4s56adsd1', 'header', 'skill', 1, 4);
+INSERT INTO `blog_article_type` VALUES (3, '85756ds4s145dad', '逼逼叨叨', '2021-04-02', '/message', 'w4sa1ds5254ds5sad4', 'header', 'message', 1, 3);
+INSERT INTO `blog_article_type` VALUES (4, '56asd4d51f4d5sf', '首页', '2021-04-23', '/', '12d4sf1df2rf1gf2', 'header', 'home', 1, 1);
+INSERT INTO `blog_article_type` VALUES (5, '5sf41s5fdss4es1', '快乐生活', '2021-04-23', '/life', '5s4d5s1f4ds2', 'header', 'life', 1, 5);
+
+-- ----------------------------
+-- Table structure for blog_icon
+-- ----------------------------
+DROP TABLE IF EXISTS `blog_icon`;
+CREATE TABLE `blog_icon`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `iconUrl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标在线js/css文件',
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标type值',
+  `createTime` datetime(0) NOT NULL COMMENT '创建时间',
+  `lastUpateTime` datetime(0) NULL DEFAULT NULL COMMENT '最后一次修改时间',
+  `icon_uuid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '图标唯一ID',
+  `site` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标位置',
+  `icon_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标对应文本',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of blog_icon
+-- ----------------------------
+INSERT INTO `blog_icon` VALUES (1, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-shipin', '2021-04-23 14:39:58', '2021-04-23 14:40:00', 'ads54d4a8d4sd48', 'header', NULL);
+INSERT INTO `blog_icon` VALUES (2, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-xiaolianxiaolian', '2021-04-23 14:40:49', '2021-04-23 14:40:51', '5sad465sd4s56adsd1', 'header', NULL);
+INSERT INTO `blog_icon` VALUES (3, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-liaotian', '2021-04-23 14:41:16', '2021-04-23 14:41:20', 'w4sa1ds5254ds5sad4', 'header', NULL);
+INSERT INTO `blog_icon` VALUES (4, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-zhuye', '2021-04-23 14:41:55', '2021-04-23 14:41:57', '12d4sf1df2rf1gf2', 'header', NULL);
+INSERT INTO `blog_icon` VALUES (5, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-iconset0239', '2021-04-23 14:42:19', '2021-04-23 14:42:21', '5s4d5s1f4ds2', 'header', NULL);
+INSERT INTO `blog_icon` VALUES (6, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-changyongicon-', '2021-04-23 16:00:34', '2021-04-23 16:00:37', 'd1415as4des5f4ds5ds', 'articleList', 'releaseTime');
+INSERT INTO `blog_icon` VALUES (7, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-wenjianjia', '2021-04-23 16:01:30', '2021-04-23 16:01:33', 'd1sd24s152fd1s5f2g1fv5', 'articleList', 'type_name');
+INSERT INTO `blog_icon` VALUES (8, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-icon--', '2021-04-23 16:02:09', '2021-04-23 16:02:12', '4s4dd5fe4sd25ff4d25f1d', 'articleList', 'view_count');
+INSERT INTO `blog_icon` VALUES (9, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-file', '2021-04-23 16:02:51', '2021-04-23 16:02:54', 'e1fsd1256sd1f5df2', 'articleList', 'view_full_text_front');
+INSERT INTO `blog_icon` VALUES (10, '//at.alicdn.com/t/font_2507031_ghb7pxcbgj9.js', 'icon-iconfontjiantou2', '2021-04-22 17:17:02', '2021-04-23 17:17:05', 's54d5s3f4e2d5g4tr', 'articleList', 'view_full_text_later');
 
 -- ----------------------------
 -- Table structure for blog_learningpath
@@ -82,7 +120,7 @@ CREATE TABLE `blog_learningpath`  (
   `status` int(0) NULL DEFAULT NULL COMMENT '当前状态 默认 1 正常',
   `subtitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '副标题',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of blog_learningpath
