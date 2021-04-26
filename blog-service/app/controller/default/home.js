@@ -12,6 +12,10 @@ class HomeController extends Controller {
   //查文章列表
   async getArticleList(){
 
+    const { ctx } = this;
+    console.log(`文章类型：`,ctx.query.typePath)
+    let sqls = ''
+
     let sql = 'SELECT '+
                 'a.article_uuid,'+
                 'u.user_name,'+
@@ -30,6 +34,10 @@ class HomeController extends Controller {
               'WHERE '+
                 'a.type_uuid = b.type_uuid '+
                 'and a.article_authorUuid = u.user_uuid '
+      if (ctx.query.typePath != null && ctx.query.typePath != '' && ctx.query.typePath != '/' ) {
+         sql += " and b.type_path ="+"'"+ctx.query.typePath+"'"
+          console.log(`sql:===>`,sql )
+      }
 
       const res = await this.app.mysql.query(sql)
       this.ctx.body = {
@@ -108,11 +116,27 @@ class HomeController extends Controller {
   //查文章详情
   async getArticleById(){
     const { ctx } = this;
-
-    let sql = '' 
+    console.log(`文章uuid：`, ctx.query.article_uuid)
+    let sql = 'SELECT '+
+                'b.article_uuid, '+
+                'b.article_title, '+
+                'b.article_content, '+
+                "DATE_FORMAT(b.releaseTime,'%Y-%m-%d %H:%i:%s' ) as releaseTime ,"+
+                'b.view_count, '+
+                'b.video_number, '+
+                'b.article_path, '+
+                't.type_name,  '+
+                't.type_path  '+
+              'FROM '+
+                'blog_article b, '+
+                'blog_article_type t  '+
+              'WHERE '+
+                'article_uuid = '+"'"+ctx.query.article_uuid+"'"+
+                'AND b.type_uuid = t.type_uuid '
+   
     const res = await this.app.mysql.query(sql)
     console.log("---------->>>>",res)
-    ctx.body = {
+    ctx.body = {  
       data:res
     }
   }

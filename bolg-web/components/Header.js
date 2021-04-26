@@ -6,6 +6,7 @@ import {ICON_URL_JS} from  '../config/iconUrl'
 import {createFromIconfontCN } from '@ant-design/icons';
 import {Row,Col, Menu } from 'antd'
 import axios from 'axios'
+import Link from 'next/link';
 
 const Header = () => {
 
@@ -30,10 +31,12 @@ const Header = () => {
         <div className={`${headerCss.header}`}>
             <Row type="flex" justify="center">
                 <Col  xs={24} sm={24} md={10} lg={15} xl={9}>
-                    <a href=''>
-                        <span className={`${headerCss.header_logo}`}>博客园</span>
-                        <span className={`${headerCss.header_txt}`}>博客园好文章</span>
-                    </a>
+                    <Link href="/">
+                        <a>
+                            <span className={`${headerCss.header_logo}`}>博客园</span>
+                            <span className={`${headerCss.header_txt}`}>博客园好文章</span>
+                        </a>
+                    </Link>
                 </Col>
                 <Col className={`${headerCss.memu_div}`} xs={0} sm={0} md={10} lg={8} xl={4}>
                     <Menu  mode="horizontal" className={`${headerCss.ant_meu}`}>
@@ -42,7 +45,9 @@ const Header = () => {
                                 item => (
                                     <Menu.Item key={item.keyName} className={`${headerCss.ant_menu_item}`}>
                                         <IconFont type={item.type}/>
-                                        <a href ={item.type_path}>{item.type_name}</a>
+                                        <Link href ={item.type_path}>
+                                           {item.type_name}
+                                        </Link>
                                     </Menu.Item>
                                 )
                             )

@@ -3,8 +3,6 @@ import ArticleListCss from '../styles/components/articleList.module.css'
 import  servicePath  from '../config/apiUrl'
 import {ICON_URL_JS} from  '../config/iconUrl'
 import Link from 'next/link'
-import Router from 'next/router'
-
 
 import { List } from 'antd'
 import {createFromIconfontCN } from '@ant-design/icons';
@@ -12,9 +10,7 @@ import axios from 'axios'
 import marked from 'marked'
 import hljs from "highlight.js";
 import 'highlight.js/styles/monokai-sublime.css';
-
-
-const ArticleList = () => {
+const ArticleList = (props) => {
 
     const IconFont = createFromIconfontCN({
         scriptUrl: ICON_URL_JS,
@@ -24,18 +20,16 @@ const ArticleList = () => {
    const [iconList,setIconList] = useState({})
 
     useEffect( async ()=>{
-        axios.get( servicePath.getArticleList).then(
+        axios.get( servicePath.getArticleList,{params:{typePath:props.typePath}}).then(
             (res)=>{setArticleList(res.data.data) }
         ) 
         axios.get( servicePath.getIconObj,{params:{site:"articleList"}}).then(
             (res) => {
                 setIconList(JSON.parse( res.data.data[0].iconKV))
-                // console.log("--data->",res.data.data[0].iconKV)
             }
         )  
     },[])
 
-   
 
     const renderer = new marked.Renderer(); 
     marked.setOptions({
@@ -54,8 +48,6 @@ const ArticleList = () => {
 
     return (
         <div>
-            {/* 面包屑导航
-            <Breadcrumbs/> */}
             <List   
                 header = {<div className={`${ArticleListCss.article_header}`}>最新文章</div>}
                 itemLayout = 'vertical'
@@ -63,7 +55,6 @@ const ArticleList = () => {
                 renderItem = { (item,index)=>{
                     return(
                         <List.Item>
-                            
                             <div className={`${ArticleListCss.article_div}`}>
                                     <Link  href={{pathname:'/detailPages',query:{article_uuid:item.article_uuid}}}>
                                         <a>
@@ -88,12 +79,14 @@ const ArticleList = () => {
                                     </div>
                                     <div className={`${ArticleListCss.article_context}`}>
                                         <span  dangerouslySetInnerHTML={{__html: marked(articleList[index].introduce === undefined ? '':articleList[index].introduce) }}></span>
-                                            <a href={item.article_path}>
-                                                <div  className={`${ArticleListCss.article_context_span}`}>
-                                                    <IconFont type={iconList.view_full_text_front}/>  查看全文
-                                                    <IconFont type={iconList.view_full_text_later}/> 
-                                                </div>
-                                            </a>
+                                            <Link  href={{pathname:'/detailPages',query:{article_uuid:item.article_uuid}}}>
+                                                <a>
+                                                    <div  className={`${ArticleListCss.article_context_span}`}>
+                                                        <IconFont type={iconList.view_full_text_front}/>  查看全文
+                                                        <IconFont type={iconList.view_full_text_later}/> 
+                                                    </div>
+                                                </a>
+                                            </Link>
                                     </div>
                             </div>
                     </List.Item>

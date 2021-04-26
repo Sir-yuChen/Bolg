@@ -6,5 +6,6 @@ module.exports = app => {
     router.get('/default/getLearningPath', controller.default.home.getLearningPath);
     router.get('/default/getHeaderIndfo', controller.default.home.getHeaderIndfo);
     router.get('/default/getIconObj', controller.default.home.getIconObj);
+    router.get('/default/getArticleById', controller.default.home.getArticleById);
   };
   

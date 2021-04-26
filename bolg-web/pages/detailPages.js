@@ -7,13 +7,9 @@ import Detail from '../components/Detail'
 import Navigation from '../components/Navigation'
 import RecommendComponent from '../components/RecommendComponent'
 
-
 import {Row,Col } from 'antd'
 
-
 const  detailPages = () => {
-
-    
     return (
         <div className="body">
             <Head>
