@@ -54,7 +54,10 @@ const Detail = () => {
     return (
         <div className={`${DetailCss.details_div}`}>
             {/* 面包屑导航 */}
-            <Breadcrumbs />              
+            <Breadcrumbs 
+                type="article_uuid" 
+                article_uuid={articleDetail.article_uuid}
+            />              
             {/* 标题 */}
             <div className={`${DetailCss.details_title}`}>
                 {articleDetail.article_title}

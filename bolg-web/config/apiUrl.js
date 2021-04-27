@@ -8,6 +8,9 @@ let servicePath = {
     getLearningPath:ipUrl + 'getLearningPath/',  // 查询学习路线
     getHeaderIndfo:ipUrl + 'getHeaderIndfo/',  // 查标题栏信息
     getIconObj:ipUrl + 'getIconObj/',  // 查图标
+    getArticleList_Message:ipUrl + 'getArticleList_Message/',  // 查图标
+    getTagList:ipUrl + 'getTagList/',  // 查tag
+    getTagListByUUID:ipUrl + 'getTagListByUUID/',  // 查文章tag通过UUID
 
 }
 export default servicePath;

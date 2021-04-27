@@ -37,7 +37,7 @@ function Advert() {
             {
                 advertList.dataList.map(
                     item => (
-                        <div className={`${AdvertCss.item_div}`}>
+                        <div key={item.title} className={`${AdvertCss.item_div}`}>
                             <a href=''>
                                 <img src={item.playbill} width="100%" />
                                 <hr />

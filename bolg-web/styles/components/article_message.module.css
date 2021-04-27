@@ -1,0 +1,29 @@
+.message_content {
+    padding-left: 1rem;
+    /* padding-top: 1rem; */
+    /* background-color: #888; */
+}
+
+.message_content_div {
+    padding: .6rem;
+    border: 1px solid rgb(219, 215, 215);
+    margin-right: 3%;
+    margin-top: 1rem;
+    width: 30%;
+    display:inline-block;
+}
+
+.message_content_text{
+    text-align: center;
+    padding-top: .3rem;
+    /* 强制文字一行内显示 */
+    white-space: nowrap;
+    /* 超出部分隐藏 */
+    overflow: hidden;
+    /* 用省略号替代超出部分 */
+    text-overflow: ellipsis;
+    color: #888;
+}
+.message_content_img img {
+    border-radius: .4rem;
+}

@@ -29,3 +29,10 @@
     border: 1px solid #cce4fb;
     border-radius: .5rem
 }
+
+
+.author_tag{
+    /* background-color: aqua; */
+    border: 1px solid #e0d6d6 !important;
+    border-radius: .5rem !important;
+}

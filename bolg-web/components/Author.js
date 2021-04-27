@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import AuthorCss from '../styles/components/author.module.css'
 import  servicePath  from '../config/apiUrl'
 
-import {Avatar,Divider} from 'antd'
+import {Avatar,Divider,Tag } from 'antd'
 import {ICON_URL_JS} from  '../config/iconUrl'
 import {createFromIconfontCN ,AntDesignOutlined} from '@ant-design/icons';
 import axios from 'axios'
@@ -12,6 +12,7 @@ function Author() {
 
     const [authorInfo ,setAuthorInfo] = useState({})
     const [iconList ,setIconList] = useState({})
+    const [tagList ,setTagList] = useState([{}])
 
     const IconFont = createFromIconfontCN({
         scriptUrl: ICON_URL_JS,
@@ -29,6 +30,12 @@ function Author() {
                 (res) => {
                     setIconList(JSON.parse( res.data.data[0].iconKV))
                     // console.log("--data->",res.data.data[0].iconKV)
+                }
+            )  
+            axios.get( servicePath.getTagList,{params:{site:"author"}}).then(
+                (res) => {
+                    setTagList(res.data.data)
+                    console.log(`查标签集合：`,res.data.data )
                 }
             )  
         }
@@ -54,6 +61,19 @@ function Author() {
                 <span>
                     {authorInfo.motto}
                 </span>
+                <div >
+                    {
+                        tagList.map(
+                            item =>{
+                                return(
+                                    <span key={item.tag_uuid}>
+                                        <Tag  className={`${AuthorCss.author_tag}`}  visible={item.tag_visible == 1 ? true:false} color={item.tag_color}>{item.tag_content}</Tag> 
+                                    </span>
+                                )
+                            }
+                        )
+                    }
+                </div>
             </div>
             <Divider>社交账号</Divider>
             <div className={`${AuthorCss.author_communicate_div}`}>
