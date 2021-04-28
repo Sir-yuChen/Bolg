@@ -1,0 +1,54 @@
+
+.addArticle_titleInput {
+   /* width: 80% !important; */
+    
+}
+
+.addArticle_markContent {
+    font-size:16px !important;
+    max-height: 745px!important;
+    min-height: 745px!important;
+    margin-top: 1rem !important;
+}
+
+.addArticle_markContent_show {
+    margin-top: 1rem;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius: 5px;
+    font-size:16px;
+    height: 745px;
+    background-color: #f0f0f0;
+    overflow: auto;
+    width: 98%;
+}
+
+.addArticle_MarkIntroduce {
+    font-size:13px !important;
+    max-height: 745px!important;
+    margin-top: 1rem !important;
+}
+
+.addArticle_MarkIntroduce_show{
+    margin-top: .5rem;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius: 5px;
+    font-size:16px; 
+    height: 220px;
+    background-color: #f0f0f0;
+    overflow: auto;
+    width: 100%;
+}
+
+.addArticle_showTime_div {
+    margin-top: .5rem;
+}
+
+.addArticle_articleButton_div {
+   
+}
+
+.addArticle_showTime_datePicker{
+    margin-left: .5rem;
+}

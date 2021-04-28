@@ -1,0 +1,20 @@
+.login_div{
+    margin: 150px auto;
+    width: 400px;
+}
+html body {
+    background-color: #f0f0f0;
+}
+.loginButton_div{
+    text-align: center;
+    line-height: 5rem;
+}
+
+.loginButton_div button {
+    width: 8rem;
+    border-radius: .3rem;
+}
+.login_span_input {
+    line-height: 4rem;
+    /* 设置标签之间的间隔 */
+}
