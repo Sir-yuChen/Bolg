@@ -14,7 +14,7 @@ const Article_message = (props) => {
         async ()=>{
             axios(servicePath.getArticleList_Message,{params:{typePath:props.typePath}}).then(
                 res => {
-                    console.log(`Message获得数据列表`, res.data.data)
+                    // console.log(`Message获得数据列表`, res.data.data)
                     setArticleList_Message(res.data.data)
                 }
             )

@@ -20,7 +20,7 @@ const Header = () => {
         async ()=>{
             axios(servicePath.getHeaderIndfo).then(
                 (res)=>{
-                    console.log("开始查询标题栏数据",res.data.data)
+                    // console.log("开始查询标题栏数据",res.data.data)
                     setHeaderType(res.data.data)
                 }
             )

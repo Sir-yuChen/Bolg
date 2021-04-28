@@ -53,6 +53,7 @@ class HomeController extends Controller {
                 'blog_tag tg   '+
               'WHERE  '+
               'tg.article_uuid IN ( SELECT article_uuid FROM blog_article )   '+
+              'GROUP BY  article_uuid  '+
               ') g ON e.article_uuid = g.article_uuid  '
 
 

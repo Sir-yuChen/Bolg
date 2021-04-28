@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 27/04/2021 18:20:21
+ Date: 28/04/2021 09:53:23
 */
 
 SET NAMES utf8mb4;
@@ -168,6 +168,9 @@ INSERT INTO `blog_tag` VALUES (2, '54ds5fd456dsf', 'red', 1, NULL, '2021-04-27',
 INSERT INTO `blog_tag` VALUES (3, '12s2ds41s41f24d', 'gold', 1, NULL, '2021-04-15', NULL, '免费视频719 集', 'author', NULL);
 INSERT INTO `blog_tag` VALUES (4, '65f4ds5f2sd4fd54', 'green', 1, NULL, '2021-04-27', NULL, '12年经验', 'author', NULL);
 INSERT INTO `blog_tag` VALUES (5, '54ds6f4fsd54s5', 'orange', 1, NULL, '2021-04-23', NULL, '前端', 'author', '4521452s5f252f45');
+INSERT INTO `blog_tag` VALUES (6, '54sd53f4rf5d54dfd5', 'blue', 1, NULL, '2021-04-28', NULL, '学习路线', NULL, 's564fd5f54s5gr4d5f2fd1');
+INSERT INTO `blog_tag` VALUES (7, 's4ds4f14d43g14df1', 'blue', 1, NULL, '2021-04-08', NULL, '学习之路', NULL, '45ad14f1e4d1s4xssd');
+INSERT INTO `blog_tag` VALUES (8, '8f7ds46f64esd5a444r', 'green', 1, NULL, '2021-04-28', NULL, '视频教程', NULL, '45ad14f1e4d1s4xssd');
 
 -- ----------------------------
 -- Table structure for blog_user

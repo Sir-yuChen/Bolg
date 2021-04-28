@@ -22,7 +22,6 @@ function Author() {
         async ()=>{
             axios(servicePath.getBlogInfo ).then(
                 (res) => {
-                    console.log(res.data.data[0])
                     setAuthorInfo(res.data.data[0])
                 }
             )
@@ -35,7 +34,7 @@ function Author() {
             axios.get( servicePath.getTagList,{params:{site:"author"}}).then(
                 (res) => {
                     setTagList(res.data.data)
-                    console.log(`查标签集合：`,res.data.data )
+                    // console.log(`查标签集合：`,res.data.data )
                 }
             )  
         }
@@ -66,7 +65,7 @@ function Author() {
                         tagList.map(
                             item =>{
                                 return(
-                                    <span key={item.tag_uuid}>
+                                    <span key={item.tag_uuid+"tag"}>
                                         <Tag  className={`${AuthorCss.author_tag}`}  visible={item.tag_visible == 1 ? true:false} color={item.tag_color}>{item.tag_content}</Tag> 
                                     </span>
                                 )

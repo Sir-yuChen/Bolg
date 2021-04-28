@@ -22,7 +22,7 @@ const LearningPath = () => {
        async () => {
             axios(servicePath.getLearningPath).then(
                 (res)=>{
-                    console.log("学习路线远程数据：",res.data.data)
+                    // console.log("学习路线远程数据：",res.data.data)
                     setLearningPath(res.data.data)
                 }
             )

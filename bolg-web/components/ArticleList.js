@@ -24,7 +24,7 @@ const ArticleList = (props) => {
         axios.get( servicePath.getArticleList,{params:{typePath:props.typePath}}).then(
             (res)=>{
                 setArticleList(res.data.data) 
-                console.log(`查询文章列表已经Tag标签集合`, res.data.data)
+                // console.log(`查询文章列表已经Tag标签集合`, res.data.data)
             }
         ) 
         axios.get( servicePath.getIconObj,{params:{site:"articleList"}}).then(
@@ -73,24 +73,22 @@ const ArticleList = (props) => {
                                             </div>
                                         </a>
                                     </Link>
-                                    <div >
-                                        标签div
-                                        {/* TODO  待完成 */}
-                                        {/* <List
-                                           dataSource = {item.tag==null ? '': item.tag } 
-                                           renderItem = { (tagItem)=>{
-                                               console.log(`标签div：`,tagItem )
-                                                return(
-                                                        <span>
-
-                                                            <Tag  className={`${ArticleListCss.author_tag}`}  visible={tagItem.tag_visible == 1 ? true:false} color={tagItem.tag_color}>{tagItem.tag_content}</Tag> 
-                                                        </span>
-                                                    )
-                                                }
-                                            }
-                                        /> */}
-                                    </div>
+                                    
                                     <div className={`${ArticleListCss.article_icon}`}>
+                                        <span >
+                                            {
+                                                // console.log(`标签集合===》：`,item.tag == (undefined || null) ? [{}]:JSON.parse(item.tag) )
+                                                ( item.tag == (undefined || null) ? [{}]:JSON.parse(item.tag)).map(
+                                                    tagObj =>{
+                                                        return (
+                                                            <span key={tagObj.tag_uuid+"tag_uuid"}>
+                                                                <Tag  className={`${ArticleListCss.article_tag}`}  visible={tagObj.tag_visible == 1 ? true:false} color={tagObj.tag_color}>{tagObj.tag_content}</Tag> 
+                                                            </span>
+                                                        )
+                                                    }
+                                                )
+                                            }
+                                        </span>
                                         <span className={`${ArticleListCss.article_icon_span}`}>
                                             <IconFont type={iconList.releaseTime}/>
                                             {item.releaseTime}

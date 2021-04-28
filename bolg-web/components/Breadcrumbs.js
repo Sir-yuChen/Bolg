@@ -3,7 +3,7 @@ import BreadcrumbCss from '../styles/components/breadcrumbs.module.css'
 import  servicePath  from '../config/apiUrl'
 
 import Link from 'next/link'
-import {Breadcrumb,List} from 'antd'
+import {Breadcrumb} from 'antd'
 import axios from 'axios'
 import {useRouter }  from 'next/router'
 
