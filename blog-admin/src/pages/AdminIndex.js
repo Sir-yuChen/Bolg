@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import '../style/adminIndex.css'
-import AddArticle from '../pages/AddArticle'
+import AddArticle from '../components/AddArticle'
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {

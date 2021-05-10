@@ -226,7 +226,6 @@ class HomeController extends Controller {
       data:res
     }
   }
-
 }
 
 module.exports = HomeController;
