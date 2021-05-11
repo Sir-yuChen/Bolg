@@ -54,16 +54,40 @@ class HomeController extends ControllerAdmin {
                 "'56sd54e56s254ds52',  "+
                 "'http://localhost:3000/detailPages',  "+
               "'https://newimg.jspang.com/BBD64.jpg'   "+
-              ")" +
-              " RETURNING article_uuid "
+              ")" 
    
     console.log(`sql:=保存文章信息=>`,sql )
     const result = await this.app.mysql.query(sql)
     const insertSuccess = result.affectedRows === 1
-    console.log(`result`, result)
+    // console.log(`result`, result)
       ctx.body = {
-        insertSuccess:insertSuccess,
-        article_uuid:result.article_uuid
+        insertSuccess:insertSuccess
+      }
+  }
+
+    //获取菜单list
+  async getAdminMenu() {
+    const { ctx } = this;
+    let menu_uuid = ctx.request.menu_uuid
+
+    let sql =
+              'SELECT  '+
+                'a.menu_uuid,  '+
+                'a.menu_name,  '+
+                'a.menu_url,  '+
+                'a.parent_id   '+
+              'FROM  '+
+                'blog_admin_menus a   '+
+              'WHERE  '+
+              "a.parent_id = '"+ (menu_uuid === (null || ''|| undefined) ?  0 : menu_uuid)+"' "+
+              " and a.menu_status = 1 "+
+              'ORDER BY  '+
+                'a.orderNum ASC  '
+           
+    console.log(`sql:=获取菜单list=>`,sql )
+    const menuList = await this.app.mysql.query(sql)
+      ctx.body = {
+        data:menuList
       }
   }
 

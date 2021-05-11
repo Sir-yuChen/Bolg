@@ -1,9 +1,10 @@
-let ipUrl = 'http://127.0.0.1:7001/admin/' 
+export let ipUrl = 'http://127.0.0.1:7001/admin/' 
 
 
 let servicePath = {
-    getArticleTypeList:ipUrl + 'getArticleTypeList/' ,  //  获取文章类型集合INFO
-    addArticle : ipUrl + 'addArticle/', // 保存文章
+    getArticleTypeList: 'getArticleTypeList/' ,  //  获取文章类型集合INFO
+    addArticle : 'addArticle/', // 保存文章
+    getAdminMenu : 'getAdminMenu/', // 获取菜单
 
 }
 export default servicePath;

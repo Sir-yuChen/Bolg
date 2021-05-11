@@ -1,12 +1,10 @@
 
-import actionTypes from '../reducer/actionType'
-import servicePath from '../config/apiUrl'
+import actionTypes from '../actions/actionType'
 import moment from 'moment'
-import axios from 'axios'
+import {addarticle} from '../../service/index'
 
-
-const defaultState = {
-  article_uuid:'',
+ const defaultState = {
+  article_uuid:'',  //文章uuid
   article_title:'',//文章标题
   article_content:'',//文章markdown内容 
   article_content_show:'',//文章内容 解析markdown
@@ -14,10 +12,11 @@ const defaultState = {
   introduce_show:'',//文章简介 解析markdown
   releaseTime:moment().format("YYYY-MM-DD HH:mm:ss"),//发布时间默认当前时间
   selectType:'',//所有文章类型
-  article_status: 3 //文章状态 1.已发布 2.发布中 3.草稿 4.待发布  5.job待发布
+  article_status: 3, //文章状态 1.已发布 2.发布中 3.草稿 4.待发布  5.job待发布
+  menuList:[]
 }
 
-const reducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.CHANGCONTENT:
       return {
@@ -52,27 +51,10 @@ const reducer = (state = defaultState, action) => {
         article_status:action.article_status
       }
     case actionTypes.ADDARTICLE:
-        axios({
-          method:'post',
-          url: servicePath.addArticle,
-          data:state
-      })
-      .then(res=>{
-          state.article_uuid = res.data
-          if(res.data.insertSuccess){
-              alert('文章保存成功')
-          }else{
-              alert('文章保存失败');
-          }   
-      })
-      
-      console.log(`state`, state)
+        addarticle(state)
+      return state 
     default:
-      console.log(`state=默认==>`, state)
+      // console.log(`state=默认==>`, state)
       return state 
   }
-}             
-export {
-  defaultState, reducer
-}
-
+}     
