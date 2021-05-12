@@ -68,18 +68,20 @@ class HomeController extends ControllerAdmin {
     //获取菜单list
   async getAdminMenu() {
     const { ctx } = this;
-    let menu_uuid = ctx.request.menu_uuid
+    let menu_uuid = ctx.query.menu_uuid
 
+    console.log(`获取菜单啊参数`, ctx.query.menu_uuid)
     let sql =
               'SELECT  '+
                 'a.menu_uuid,  '+
                 'a.menu_name,  '+
+                'a.level,  '+
                 'a.menu_url,  '+
                 'a.parent_id   '+
               'FROM  '+
                 'blog_admin_menus a   '+
               'WHERE  '+
-              "a.parent_id = '"+ (menu_uuid === (null || ''|| undefined) ?  0 : menu_uuid)+"' "+
+              "a.parent_id = '"+ (menu_uuid == 'undefined' ?  0 : menu_uuid)+"' "+
               " and a.menu_status = 1 "+
               'ORDER BY  '+
                 'a.orderNum ASC  '

@@ -8,6 +8,7 @@ let actionTypes = {
     UPDATE_RELEASEMODE: "update_releaseMode", //发布方式
     TEMPORARYARTICLE: "temporaryArticle", //暂存文章
     ADDARTICLE: "addarticle", //新增文章
+    BREADCRUMBSPARAM:"breadcrumbsParam",//面包屑参数
 }
 export default actionTypes;
     

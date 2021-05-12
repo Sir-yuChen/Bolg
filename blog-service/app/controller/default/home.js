@@ -135,7 +135,7 @@ class HomeController extends Controller {
   //查文章详情
   async getArticleById(){
     const { ctx } = this;
-    console.log(`文章uuid：`, ctx.query.article_uuid)
+    // console.log(`文章uuid：`, ctx.query.article_uuid)
     let sql = 'SELECT '+
                 'b.article_uuid, '+
                 'b.article_title, '+

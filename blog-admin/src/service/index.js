@@ -15,5 +15,5 @@ export const addarticle = (data) =>{
 export const getAdminMenu = (menu_uuid)=>{
     console.log(`获取参数uuid`,menu_uuid )
 
-    return http.get(servicePath.getAdminMenu,{menu_uuid:menu_uuid===(null||''||undefined) ? 0:menu_uuid})
+    return http.get(servicePath.getAdminMenu+"?menu_uuid="+menu_uuid)
 }

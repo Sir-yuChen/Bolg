@@ -13,7 +13,7 @@ import {addarticle} from '../../service/index'
   releaseTime:moment().format("YYYY-MM-DD HH:mm:ss"),//发布时间默认当前时间
   selectType:'',//所有文章类型
   article_status: 3, //文章状态 1.已发布 2.发布中 3.草稿 4.待发布  5.job待发布
-  menuList:[]
+  breadcrumbsParam:[{name:'首页',url:'/index',level:"/"}],//面包屑参数
 }
 
 export default (state = defaultState, action) => {
@@ -53,6 +53,25 @@ export default (state = defaultState, action) => {
     case actionTypes.ADDARTICLE:
         addarticle(state)
       return state 
+    case actionTypes.BREADCRUMBSPARAM:
+      //面包屑数据
+      let result = false
+      state.breadcrumbsParam.map(
+          (item,index) => {
+            if (item.name == action.breadcrumbsParam.name) {
+                result =  true
+            }
+            if (item.level == action.breadcrumbsParam.level) {
+                state.breadcrumbsParam.splice(index, state.breadcrumbsParam.length-1)
+
+                result = false
+            }
+          }
+        )
+      if (result != true) {
+        state.breadcrumbsParam.push(action.breadcrumbsParam)
+      }
+      return {...state}
     default:
       // console.log(`state=默认==>`, state)
       return state 

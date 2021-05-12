@@ -1,17 +1,25 @@
-import React from 'react'
 import '../../style/breadcrumbs.css'
+import {useSelector} from 'react-redux'
 
 import {Breadcrumb } from 'antd'
 
 const Breadcrumbs = () => {
+
+    let  breadcrumbsParamlist = useSelector(state => state.breadcrumbsParam)
+    console.log(`面包屑：===》`, breadcrumbsParamlist)
+
     return (
         <div className='breadcrumb'>
             <Breadcrumb className='breadcrumb_div'>
-                <Breadcrumb.Item>User</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                {
+                    breadcrumbsParamlist.map(
+                        obj => {
+                            return (
+                                <Breadcrumb.Item>{obj.name}</Breadcrumb.Item>
+                            )
+                        }
+                    )
+                }
             </Breadcrumb>
         </div>
     )

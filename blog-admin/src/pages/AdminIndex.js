@@ -1,8 +1,11 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,Suspense, lazy} from 'react'
 import '../style/adminIndex.css'
-import AddArticle from '../components/index/AddArticle'
+// import AddArticle from '../components/index/AddArticle'
 import Breadcrumbs from '../components/navigate/Breadcrumbs'
 import {getAdminMenu} from '../service/index'
+import actionTypes from '../redux/actions/actionType'
+import {useSelector,useDispatch} from 'react-redux'
+// import DataStatistics from '../components/dataStatistics/DataStatistics'
 
 import { Layout, Menu } from 'antd'
 import {
@@ -16,16 +19,23 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const AdminIndex = () => {
-    // const rootSubmenuKeys = ['sub1', 'sub2', 'sub3','sub4', 'sub5']
+
+    const state = useSelector(state => state);
+    const dispatch = useDispatch();
 
     const [collapsed,setCollapsed] = useState(false)
     const [menuList,setMenuList] =  useState([])
-    const [openKeys, setOpenKeys] = useState([]);
-    const [rootSubmenuKeys, setRootSubmenuKeys] = useState([]);
-    const [menuList_child, setMenuList_child] = useState([]);
+    const [openKeys, setOpenKeys] = useState([])
+    const [rootSubmenuKeys, setRootSubmenuKeys] = useState([])
+    let [menuList_child, setMenuList_child] = useState([])
+    let [breadcrumbsParam, setBreadcrumbsParam] = useState([])
+    let [path, setPath] = useState('/index/')
 
 
-
+    const HomePage = lazy(() =>
+        import(/* webpackChunkName: "home" */ "../components/dataStatistics/DataStatistics")
+    )
+    
     const  onCollapse = collapsed => {
         setCollapsed(collapsed)
       };
@@ -34,7 +44,7 @@ const AdminIndex = () => {
         getAdminMenu().then(
             res =>{
                     setMenuList(res.data.data)
-                    menuList.map(
+                    res.data.data.map(
                         menuItem =>{
                             rootSubmenuKeys.push(menuItem.menu_uuid)
                         }
@@ -44,14 +54,41 @@ const AdminIndex = () => {
     }, [])
 
     //菜单list
-    const getAdminMenuList = (menu_uuid)=>{
-        console.log(`打印uuid`,menu_uuid )
-        getAdminMenu(menu_uuid===(null||''||undefined) ? 0:menu_uuid).then(
+    const getAdminMenuList = (key )=>{
+        getAdminMenu(key.key).then(
             res =>{
                 setMenuList_child(res.data.data)
+                getBreadcrumbsParam(key)
             }
         )
     }
+    //组装面包屑参数
+    const getBreadcrumbsParam = (key)=>{
+        menuList.map(
+            menu =>{
+                if (menu.menu_uuid === key.key) {
+                    dispatch({
+                        type:actionTypes.BREADCRUMBSPARAM,
+                        breadcrumbsParam:{name:menu.menu_name,url:menu.menu_url,level:menu.level}
+                    })
+                }
+            }
+        )
+
+        menuList_child.map(
+            child =>{
+                if (child.menu_uuid === key.key) {
+                    dispatch({
+                        type:actionTypes.BREADCRUMBSPARAM,
+                        breadcrumbsParam:{name:child.menu_name,url:child.menu_url,level:child.level}
+                    })
+                }
+            }
+        )
+    }
+
+    //修改路由
+
 
     const onOpenChange = keys => {
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);
@@ -60,7 +97,7 @@ const AdminIndex = () => {
         } else {
           setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
         }
-      };
+    }
 
 
     return (
@@ -79,13 +116,13 @@ const AdminIndex = () => {
                                         key={subMenuItem.menu_uuid} 
                                         icon={<PieChartOutlined />} 
                                         title={subMenuItem.menu_name}
-                                        onClick={getAdminMenuList}
+                                        onTitleClick={getAdminMenuList}
                                     >
                                         {
                                             menuList_child.map(
                                                 menus =>{
                                                     return(
-                                                        <Menu.Item key={menus.menu_uuid}>{menus.menu_name}</Menu.Item>
+                                                        <Menu.Item key={menus.menu_uuid} onClick={getBreadcrumbsParam}>{menus.menu_name}</Menu.Item>
                                                     )
                                                 }
                                             )
@@ -95,25 +132,6 @@ const AdminIndex = () => {
                             }
                         )
                     }
-                    
-                    <SubMenu key="sub2" icon={<PieChartOutlined />} title=" 写作发布" ></SubMenu>
-                    <SubMenu key="sub3" icon={<DesktopOutlined />} title="工作台"  >
-                        <Menu.Item key="3">文章管理</Menu.Item>
-                        <Menu.Item key="4">文章类别管理</Menu.Item>
-                        <Menu.Item key="5">标签管理</Menu.Item>
-                        <Menu.Item key="6">Icon图标管理</Menu.Item>
-                        <Menu.Item key="7">学习路线管理</Menu.Item>
-                        <Menu.Item key="8">评论管理</Menu.Item>
-                    </SubMenu>
-                    <SubMenu key="sub4" icon={<UserOutlined />} title="基本信息管理">
-                        <Menu.Item key="11">个人信息管理</Menu.Item>
-                        <Menu.Item key="12">账户密码修改</Menu.Item>
-                    </SubMenu>
-                    <SubMenu key="sub5" icon={<UserOutlined />} title="权限管理">
-                        <Menu.Item key="13">分配权限</Menu.Item>
-                        <Menu.Item key="14">管理员列表</Menu.Item>
-                        <Menu.Item key="15">权限规则</Menu.Item>
-                    </SubMenu>
                 </Menu>
                 </Sider>
                 <Layout className="site-layout">
@@ -122,9 +140,12 @@ const AdminIndex = () => {
                 </Header>
                 <Content style={{ margin: '0 16px' }}>
                     {/* 面包屑导航 */}
-                    <Breadcrumbs/>
+                    <Breadcrumbs
+                        breadcrumbsParam ={breadcrumbsParam}
+                    />
                     <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                        <Route path='/index/' exact component={AddArticle}/>
+                        <Route path={path} exact component={HomePage}/>
+                        {/* <Route path='/index/AddArticle' exact component={AddArticle}/> */}
                     </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>bokeyuan.com ©2018 Created by zhangyu</Footer>
