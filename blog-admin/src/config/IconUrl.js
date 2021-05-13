@@ -1,1 +1,1 @@
-export const ICON_URL = '//at.alicdn.com/t/font_2517832_s6ntxcuzjln.js'
+export const ICON_URL = '//at.alicdn.com/t/font_2517832_w9j7r8lo919.js'

@@ -9,6 +9,7 @@ let actionTypes = {
     TEMPORARYARTICLE: "temporaryArticle", //暂存文章
     ADDARTICLE: "addarticle", //新增文章
     BREADCRUMBSPARAM:"breadcrumbsParam",//面包屑参数
+    UPDATE_COMP_PATH:"update_comp_path",//修改组件地址
 }
 export default actionTypes;
     

@@ -1,0 +1,35 @@
+.header_div {
+    width: 100%;
+    display:block;
+}
+.avatar_span {
+   /* margin-left: 50%; */
+   float:right;
+   margin-right: 4%;
+}
+.avatar_span_img {
+    border: 1px solid rgb(150, 146, 146) !important;
+
+}
+.hreader_dropdown {
+    margin-left: 5px;
+    /* background-color: aqua; */
+    padding-bottom: 1rem;
+}
+
+.soundOutlined {
+    /* float:right; */
+    margin-left: 73%;
+    /* background-color: aquamarine; */
+    font-size: 25px;
+}
+.refresh {
+    margin-left: 1%;
+    font-size: 18px; 
+    color: rgb(75, 82, 82);
+}
+.systemTitleFont {
+    margin-left: 1.5%;
+    font-size: 18px; 
+    color: rgb(159, 182, 202);
+}

@@ -14,6 +14,7 @@ import {addarticle} from '../../service/index'
   selectType:'',//所有文章类型
   article_status: 3, //文章状态 1.已发布 2.发布中 3.草稿 4.待发布  5.job待发布
   breadcrumbsParam:[{name:'首页',url:'/index',level:"/"}],//面包屑参数
+  comp_Path:'/dataStatistics/DataStatistics',//组件地址
 }
 
 export default (state = defaultState, action) => {
@@ -53,6 +54,11 @@ export default (state = defaultState, action) => {
     case actionTypes.ADDARTICLE:
         addarticle(state)
       return state 
+    case actionTypes.UPDATE_COMP_PATH:
+      return {
+        ...state,
+        comp_Path:action.comp_Path
+      } 
     case actionTypes.BREADCRUMBSPARAM:
       //面包屑数据
       let result = false
@@ -63,7 +69,6 @@ export default (state = defaultState, action) => {
             }
             if (item.level == action.breadcrumbsParam.level) {
                 state.breadcrumbsParam.splice(index, state.breadcrumbsParam.length-1)
-
                 result = false
             }
           }

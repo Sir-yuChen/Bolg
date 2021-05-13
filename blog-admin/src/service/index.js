@@ -13,7 +13,17 @@ export const addarticle = (data) =>{
 }
 //获取菜单list
 export const getAdminMenu = (menu_uuid)=>{
-    console.log(`获取参数uuid`,menu_uuid )
-
     return http.get(servicePath.getAdminMenu+"?menu_uuid="+menu_uuid)
+}
+
+//获取菜单信息根据url
+export const getAdminMenuByUrl = (menu_url)=>{
+    
+    return http.get(servicePath.getAdminMenuByUrl+"?menu_url="+menu_url)
+}
+
+//获取通知
+export const getNoticeInfoByUUid = (user_uuid)=>{
+    
+    return http.get(servicePath.getNoticeInfoByUUid+"?user_uuid="+user_uuid)
 }

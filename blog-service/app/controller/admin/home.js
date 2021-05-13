@@ -92,6 +92,54 @@ class HomeController extends ControllerAdmin {
         data:menuList
       }
   }
+    //获取菜单信息根据url
+  async getAdminMenuByUrl() {
+    const { ctx } = this;
+    let menu_url = ctx.query.menu_url
+
+    // console.log(`获取菜单啊参数`, ctx.query.menu_url)
+    let sql =
+              'SELECT  '+
+                'a.menu_uuid,  '+
+                'a.menu_name,  '+
+                'a.level,  '+
+                'a.menu_url,  '+
+                'a.parent_id   '+
+              'FROM  '+
+                'blog_admin_menus a   '+
+              'WHERE  '+
+              " a.menu_url = '"+ menu_url+"'"
+           
+    console.log(`sql:=获取菜单信息根据url=>`,sql )
+    const menuInfo = await this.app.mysql.query(sql)
+      ctx.body = {
+        data:menuInfo
+      }
+  }
+
+  //获取通知信息list
+  async getNoticeInfoByUUid() {
+    const { ctx } = this;
+    let user_uuid = ctx.query.user_uuid
+    let sql =
+              'SELECT  '+
+                'b.notice_content,  '+
+                'b.notice_title,  '+
+                'b.notice_type,  '+
+                'b.duration,  '+
+                'b.notice_uuid   '+
+              'FROM  '+
+                'blog_notice b   '+
+              'WHERE  '+
+                'b.notice_status = 0   '+
+                "AND b.user_uuid = '"+user_uuid+"'  "
+           
+    console.log(`sql:=获取通知信息list=>`,sql )
+    const NoticeInfo = await this.app.mysql.query(sql)
+      ctx.body = {
+        data:NoticeInfo
+      }
+  }
 
 }
 module.exports = HomeController;

@@ -6,7 +6,7 @@ import {Breadcrumb } from 'antd'
 const Breadcrumbs = () => {
 
     let  breadcrumbsParamlist = useSelector(state => state.breadcrumbsParam)
-    console.log(`面包屑：===》`, breadcrumbsParamlist)
+    // console.log(`面包屑：===》`, breadcrumbsParamlist)
 
     return (
         <div className='breadcrumb'>
