@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 13/05/2021 18:13:50
+ Date: 14/05/2021 17:52:12
 */
 
 SET NAMES utf8mb4;
@@ -77,7 +77,7 @@ CREATE TABLE `blog_article`  (
   `article_path` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '文章地址',
   `article_cover` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '封面地址',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 65 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of blog_article
@@ -199,12 +199,15 @@ CREATE TABLE `blog_notice`  (
   `notice_uuid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '通知唯一ID',
   `duration` decimal(10, 2) NULL DEFAULT NULL COMMENT '通知关闭时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of blog_notice
 -- ----------------------------
-INSERT INTO `blog_notice` VALUES (1, '测试通知标题', 'info', 'job', 'Guns基于Spring Boot 2，致力于做更简洁的后台管理系统，完美整合springmvc + shiro + mybatis-plus + beetl，Guns项目代码简洁，注释丰富，上手容易，同时Guns包含许多基础模块(用户管理，角色管理，部门管理，字典管理等10个模块)，可以直接作为一个后台管理系统的脚手架！同时提供spring cloud版本！\r\n————————————————\r\n版权声明：本文为CSDN博主「不安分的猿人」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。\r\n原文链接：https://blog.csdn.net/huaairen/article/details/88649070', '2021-05-13 17:49:36', '2021-05-13 17:49:38', 0, '56sd54e56s254ds52', '4541eg8r5aafg86re51f1g5', 4.50);
+INSERT INTO `blog_notice` VALUES (1, '测试通知标题', 'info', 'job', 'Guns基于Spring Boot 2，致力于做更简洁的后台管理系统，完美整合springmvc + shiro + mybatis-plus + beetl，Guns项目代码简洁，注释丰富，上手容易，同时Guns包含许多基础模块(用户管理，角色管理，部门管理，字典管理等10个模块)，可以直接作为一个后台管理系统的脚手架！同时提供spring cloud版本！\r\n————————————————\r\n版权声明：本文为CSDN博主「不安分的猿人」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。\r\n原文链接：https://blog.csdn.net/huaairen/article/details/88649070', '2021-05-13 17:49:36', '2021-05-14 13:38:29', 1, '56sd54e56s254ds52', '4541eg8r5aafg86re51f1g5', 4.50);
+INSERT INTO `blog_notice` VALUES (2, '错误提示', 'error', 'job', '信息录入失败', '2021-05-14 09:14:55', '2021-05-14 13:38:29', 1, '56sd54e56s254ds52', 'd5f4rd853fre6d51545ed', 0.00);
+INSERT INTO `blog_notice` VALUES (3, '成功提示', 'success', 'job', '视频上传成功', '2021-05-14 09:16:42', '2021-05-14 13:38:29', 1, '56sd54e56s254ds52', '534f186r3sd515r3ds2f1re5', 3.00);
+INSERT INTO `blog_notice` VALUES (4, '超时提醒', 'warning', 'job', '数据量过大，处理超时', '2021-05-14 09:18:05', '2021-05-14 13:38:29', 1, '56sd54e56s254ds52', '44f5dsa4af8e6s5d3f5re85fsd1', 0.00);
 
 -- ----------------------------
 -- Table structure for blog_tag
