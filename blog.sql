@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 12/05/2021 18:14:12
+ Date: 13/05/2021 18:13:50
 */
 
 SET NAMES utf8mb4;
@@ -39,11 +39,11 @@ CREATE TABLE `blog_admin_menus`  (
 -- ----------------------------
 -- Records of blog_admin_menus
 -- ----------------------------
-INSERT INTO `blog_admin_menus` VALUES (1, '54g1df5tgf5d1g5f21', '网站数据统计', '/index/dataStatistics/DataStatistics', '0', 0, 1, '2021-05-12 16:08:04', '2021-05-11 15:20:49', 1, NULL);
-INSERT INTO `blog_admin_menus` VALUES (2, 'asd4es65654fdd5455fds3', '写作发布', '/index', '0', 0, 1, '2021-05-11 16:07:56', '2021-05-11 15:26:41', 2, NULL);
-INSERT INTO `blog_admin_menus` VALUES (3, 'd54fsd4e23sd5f4efd2s', '工作台', '/index/work', '0', 0, 1, '2021-05-12 15:09:49', '2021-05-11 15:27:13', 3, NULL);
-INSERT INTO `blog_admin_menus` VALUES (4, 'sf54re653g1355rt53sfd13rq45', '基本信息管理', '/index/baseInfo', '0', 0, 1, '2021-05-12 15:09:52', '2021-05-11 15:27:58', 4, NULL);
-INSERT INTO `blog_admin_menus` VALUES (5, 'd5s4f5d15f4dxf4a534534f', '权限管理', '/index/power', '0', 0, 1, '2021-05-12 15:09:54', '2021-05-11 15:29:00', 5, NULL);
+INSERT INTO `blog_admin_menus` VALUES (1, '54g1df5tgf5d1g5f21', '网站数据统计', '/dataStatistics/DataStatistics', '0', 0, 1, '2021-05-13 09:55:54', '2021-05-11 15:20:49', 1, NULL);
+INSERT INTO `blog_admin_menus` VALUES (2, 'asd4es65654fdd5455fds3', '写作发布', '/index/AddArticle', '0', 0, 1, '2021-05-13 09:56:32', '2021-05-11 15:26:41', 2, NULL);
+INSERT INTO `blog_admin_menus` VALUES (3, 'd54fsd4e23sd5f4efd2s', '工作台', '/workbench/Index', '0', 0, 1, '2021-05-13 09:58:43', '2021-05-11 15:27:13', 3, NULL);
+INSERT INTO `blog_admin_menus` VALUES (4, 'sf54re653g1355rt53sfd13rq45', '基本信息管理', '/basicInfo/Index', '0', 0, 1, '2021-05-13 09:59:57', '2021-05-11 15:27:58', 4, NULL);
+INSERT INTO `blog_admin_menus` VALUES (5, 'd5s4f5d15f4dxf4a534534f', '权限管理', '/power/Index', '0', 0, 1, '2021-05-13 10:06:07', '2021-05-11 15:29:00', 5, NULL);
 INSERT INTO `blog_admin_menus` VALUES (6, 's4f6f45ds6544sf54sd3', '文章管理', '/index/article', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-12 15:09:56', '2021-05-11 15:29:16', 1, NULL);
 INSERT INTO `blog_admin_menus` VALUES (7, '54dger5sd34f5d34g56sr3df', '文章类别管理', '/index/articleType', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-12 15:09:59', '2021-05-11 15:30:29', 2, NULL);
 INSERT INTO `blog_admin_menus` VALUES (8, '5e5as5f1d654d3sdf864', '个人信息管理', '/index/personalDetails', 'sf54re653g1355rt53sfd13rq45', 1, 1, '2021-05-12 15:10:03', '2021-05-11 15:40:54', 1, NULL);
@@ -181,6 +181,30 @@ INSERT INTO `blog_learningpath` VALUES (1, '5d54as5d4sdds5', 'Vue3.x学习路线
 INSERT INTO `blog_learningpath` VALUES (2, '43d4as5d4ds5ad4', 'React学习路线', '45ad14f1e4d1s4xs', '2021-04-21', '张宇', 1, '基础到实战');
 INSERT INTO `blog_learningpath` VALUES (3, '5sd4as554dsd1', 'Vue2.x学习路线', '4521452s5f252f45s85', '2021-04-11', '博客园', 1, '基础到实战');
 INSERT INTO `blog_learningpath` VALUES (4, '45a4dsa654d56s35d4s', 'Flutter学习路线', '564ddsa1f234d1dsf', '2021-01-01', '博客园', 1, '基础到实战');
+
+-- ----------------------------
+-- Table structure for blog_notice
+-- ----------------------------
+DROP TABLE IF EXISTS `blog_notice`;
+CREATE TABLE `blog_notice`  (
+  `id` int(0) NOT NULL AUTO_INCREMENT,
+  `notice_title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '通知标题',
+  `notice_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '通知类型success/info/warning/error',
+  `notice_source` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '通知来源',
+  `notice_content` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '通知内容',
+  `create_dateTime` datetime(0) NULL DEFAULT NULL COMMENT '通知创建时间',
+  `last_datatime` datetime(0) NULL DEFAULT NULL COMMENT '最后修改时间',
+  `notice_status` int(0) NULL DEFAULT NULL COMMENT '当前状态1.已读0.未读',
+  `user_uuid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户唯一ID',
+  `notice_uuid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '通知唯一ID',
+  `duration` decimal(10, 2) NULL DEFAULT NULL COMMENT '通知关闭时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of blog_notice
+-- ----------------------------
+INSERT INTO `blog_notice` VALUES (1, '测试通知标题', 'info', 'job', 'Guns基于Spring Boot 2，致力于做更简洁的后台管理系统，完美整合springmvc + shiro + mybatis-plus + beetl，Guns项目代码简洁，注释丰富，上手容易，同时Guns包含许多基础模块(用户管理，角色管理，部门管理，字典管理等10个模块)，可以直接作为一个后台管理系统的脚手架！同时提供spring cloud版本！\r\n————————————————\r\n版权声明：本文为CSDN博主「不安分的猿人」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。\r\n原文链接：https://blog.csdn.net/huaairen/article/details/88649070', '2021-05-13 17:49:36', '2021-05-13 17:49:38', 0, '56sd54e56s254ds52', '4541eg8r5aafg86re51f1g5', 4.50);
 
 -- ----------------------------
 -- Table structure for blog_tag

@@ -7,6 +7,7 @@ let servicePath = {
     getAdminMenu : 'getAdminMenu/', // 获取菜单
     getAdminMenuByUrl:'getAdminMenuByUrl',//获取菜单信息通过url
     getNoticeInfoByUUid:'getNoticeInfoByUUid/',//获取通知信息
-
-}
+    getNoticeNum:'getNoticeNum', //通知数量
+    updateNoticeNum:'updateNoticeNum', //修改通知为已读
+}   
 export default servicePath;

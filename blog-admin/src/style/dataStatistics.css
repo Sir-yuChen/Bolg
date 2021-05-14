@@ -1,0 +1,28 @@
+.site-card-wrapper {
+    background-color:#f0f2f5;
+}
+
+.col_div {
+    background-color: rgb(255, 255, 255);
+    margin-top: .5rem;
+    border-radius: .3rem;
+    margin-left: 1.4rem;
+    margin-bottom: .5rem;
+}
+.col_div_icon {
+    margin-top: 1rem;
+    text-align: center;
+    width: 36%;
+    float:left;
+    /* background-color: aqua; */
+    font-size: 40px;
+    /* margin-left: 1rem; */
+}
+.col_div_text{
+    width: 50%;
+    text-align: left;
+    float:right;
+    /* background-color: aquamarine; */
+    margin-top: 1.8rem;
+    margin-right: 1.5rem;
+}

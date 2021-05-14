@@ -3,24 +3,22 @@
     display:block;
 }
 .avatar_span {
-   /* margin-left: 50%; */
    float:right;
-   margin-right: 4%;
+   margin-right: 10%;
 }
+
 .avatar_span_img {
     border: 1px solid rgb(150, 146, 146) !important;
-
+    margin-bottom: 1rem !important;
 }
 .hreader_dropdown {
     margin-left: 5px;
-    /* background-color: aqua; */
-    padding-bottom: 1rem;
 }
 
 .soundOutlined {
-    /* float:right; */
-    margin-left: 73%;
-    /* background-color: aquamarine; */
+    padding-right: 1.5rem;
+}
+.soundOutlined_icon{
     font-size: 25px;
 }
 .refresh {

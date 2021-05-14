@@ -27,3 +27,11 @@ export const getNoticeInfoByUUid = (user_uuid)=>{
     
     return http.get(servicePath.getNoticeInfoByUUid+"?user_uuid="+user_uuid)
 }
+//获取通知数量
+export const getNoticeNum   = (user_uuid)=>{
+    return http.get(servicePath.getNoticeNum+"?user_uuid="+user_uuid)
+}
+//修改通知 为已读
+export const updateNoticeNum   = (user_uuid)=>{
+    return http.put(servicePath.updateNoticeNum+"?user_uuid="+user_uuid)
+}

@@ -127,7 +127,8 @@ class HomeController extends ControllerAdmin {
                 'b.notice_title,  '+
                 'b.notice_type,  '+
                 'b.duration,  '+
-                'b.notice_uuid   '+
+                'b.notice_uuid,   '+
+                'b.user_uuid  ' +
               'FROM  '+
                 'blog_notice b   '+
               'WHERE  '+
@@ -138,6 +139,45 @@ class HomeController extends ControllerAdmin {
     const NoticeInfo = await this.app.mysql.query(sql)
       ctx.body = {
         data:NoticeInfo
+      }
+  }
+
+  //获取通知数量
+  async getNoticeNum() {
+    const { ctx } = this;
+    let user_uuid = ctx.query.user_uuid
+    let sql =
+              'SELECT  '+
+                ' COUNT(1) as countNum  '+
+              'FROM  '+
+                'blog_notice b   '+
+              'WHERE  '+
+                'b.notice_status = 0   '+
+                "AND b.user_uuid = '"+user_uuid+"'  "
+           
+    console.log(`sql:=获取通知数量=>`,sql )
+    const NoticeNum = await this.app.mysql.query(sql)
+      ctx.body = {
+        data:NoticeNum
+      }
+  }
+
+  //修改通知为已读
+  async updateNoticeNum(){
+    const { ctx } = this;
+    let user_uuid = ctx.query.user_uuid
+    let sql =
+        'UPDATE blog_notice  '+
+        'SET last_datatime = SYSDATE( ),  '+
+        'notice_status = 1   '+
+        'WHERE  '+
+          "user_uuid = '"+user_uuid+"'  "
+            
+           
+    console.log(`sql:=修改通知为已读=>`,sql )
+    const NoticeNum = await this.app.mysql.query(sql)
+      ctx.body = {
+        data:NoticeNum
       }
   }
 
