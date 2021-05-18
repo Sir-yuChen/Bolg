@@ -9,5 +9,13 @@ let servicePath = {
     getNoticeInfoByUUid:'getNoticeInfoByUUid/',//获取通知信息
     getNoticeNum:'getNoticeNum', //通知数量
     updateNoticeNum:'updateNoticeNum', //修改通知为已读
+    getDataNum:'getDataNum',
+    geTlineChart:"geTlineChart",
+    geTlineChart_type:'geTlineChart_type',
+    getHotSearch:'getHotSearch',
+    getNoticeInfo:'getNoticeInfo',
+    getNumbByType:'getNumbByType',
+    getTypeInfo:'getTypeInfo',
+    getArticleInfo:'getArticleInfo'
 }   
 export default servicePath;

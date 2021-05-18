@@ -1,0 +1,32 @@
+.search_alldiv {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.search_div {
+    padding-top: 3rem;
+    padding-left: 8rem;
+    /* border: 1px solid #000; */
+}
+
+.search_input{
+    width: 15%;
+}
+
+.search_select {
+    width: 150px;
+    margin-left: 100px;
+}
+.search_rangePicker {
+    margin-left: 100px;
+}
+.search_button {
+    /* background-color: rgb(163, 198, 231); */
+    width: 100px;
+    border-radius: .3rem;
+    margin-left: 100px;
+}
+.content_list {
+    margin-top: 2rem;
+    background-color: rgb(155, 155, 155);
+}

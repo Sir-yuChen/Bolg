@@ -1,13 +1,56 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import '../../../style/echartsArticle.css'
+import {geTlineChart,geTlineChart_type} from '../../../service/dataPage'
 
 import ReactEcharts from 'echarts-for-react'  // yarn  add  echarts-for-react echarts --save
 
 
 const EchartsArticle = () => {
+
+    const [allArticle, setAllArticle] = useState([])
+    const [allViewCount, setAllViewCount] = useState([])
+    const [allVideos, setAllVideos] = useState([])
+    const [typeslist,setTypeslist] = useState([])
+    const [uxAxis,setUxAxis] = useState([])
+    
+
+    useEffect(() => {
+        geTlineChart(new Date().getFullYear()).then(
+            res=>{
+                let result = res.data.data
+                console.log(`res ===>`,result )
+                for (let i = 1; i <= new Date().getMonth()+1; i++) {
+                    uxAxis.push(i)
+                }     
+                result.map(
+                    (item,index) =>{
+                        for(var ux of uxAxis){	
+                            if (ux == item.months ) {
+                                allArticle.push(item.allArticle)
+                                allViewCount.push(item.allViewCount)
+                                allVideos.push(item.allVideos)
+                            }
+                        }
+                    }
+                )
+            }
+        )
+        geTlineChart_type(new Date().getFullYear()).then(
+            res =>{
+                uxAxis.map(
+                    ux =>{
+                        typeslist.push(res.data.data.length) 
+                        // console.log(`======`,allArticle,allViewCount, allVideos,typeslist)
+                    }
+                )
+            }
+        )
+    }, [])
+
+
   const  option = {
         title: {
-            text: '2021文章数据统计'
+            text: new Date().getFullYear()+'文章数据统计'
         },
         tooltip: {
             trigger: 'axis'
@@ -25,7 +68,7 @@ const EchartsArticle = () => {
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月','八月','九月','十月','十一月','十二月']
+            data: uxAxis
         },
         yAxis: {
             type: 'value'
@@ -35,38 +78,37 @@ const EchartsArticle = () => {
                 name: '文章数量',
                 type: 'line',
                 stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
+                data: allArticle
             },
             {
                 name: '阅读量',
                 type: 'line',
                 stack: '总量',
-                data: [220, 182, 191, 234, 290, 330, 310]
+                data: allViewCount
             },
             {
                 name: '视频集数',
                 type: 'line',
                 stack: '总量',
-                data: [150, 232, 201, 154, 190, 330, 410]
+                data: allVideos
             },
             {
                 name: '评论量',
                 type: 'line',
                 stack: '总量',
-                data: [320, 332, 301, 334, 390, 330, 320]
+                data: [120, 132, 101, 134, 90, 230, 210]
             },
             {
                 name: '文章类型',
                 type: 'line',
                 stack: '总量',
-                data: [10, 20, 15, 10, 4, 8, 15]
-            }
+                data: typeslist
+            },
+
+           
         ]
-    };
+    }
     
-
-
-
 
     return (
         <div>

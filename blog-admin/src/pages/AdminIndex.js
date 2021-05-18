@@ -59,7 +59,7 @@ const AdminIndex = () => {
     }
     //组装面包屑参数
     const getBreadcrumbsParam = (key)=>{
-        console.log(`打印key`,key.key )
+        // console.log(`打印key`,key.key )
         let temp_path =key.key
         menuList.map(
             menu =>{
@@ -94,7 +94,6 @@ const AdminIndex = () => {
                     })
                 }
             )
-           
          }
          
         dispatch({
@@ -102,10 +101,7 @@ const AdminIndex = () => {
             comp_Path:temp_path//路由以及组件
         })
         history.push(temp_path) //编程式跳转
-        }
-
-    //修改路由
-
+    }
 
     const onOpenChange = keys => {
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1);

@@ -107,6 +107,17 @@ const AddArticle = () => {
             type: actionTypes.ADDARTICLE,
         })
     }
+    const releaseArticle =()=>{
+        dispatch({
+            ...state,
+            type: actionTypes.UPDATE_RELEASEMODE,
+            article_status: 1
+        })
+        dispatch({
+            ...state,
+            type: actionTypes.ADDARTICLE,
+        })
+    }
 
     return (
         <div className='addArticle_div'>
@@ -178,6 +189,7 @@ const AddArticle = () => {
                                         size='large'
                                         className='addArticle_articleButton'
                                         type='primary'
+                                        onClick={releaseArticle}
                                     >发布文章</Button>
                                 </div>
                             </Col>

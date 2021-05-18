@@ -1,0 +1,6 @@
+.time_line{
+    padding: .5rem;
+    max-height: 500px !important;
+    /* height: 500px !important; */
+    overflow-y :auto !important;
+}
