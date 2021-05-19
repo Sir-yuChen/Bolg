@@ -93,7 +93,7 @@ const AddArticle = () => {
         dispatch({
             ...state,
             type: actionTypes.UPDATE_RELEASEMODE,
-            article_status: value === 'now' ? 3 : 5
+            article_status: value === 'now' ? 3 : 4
         })
     }
     const temporaryArticle = () => {
@@ -111,7 +111,7 @@ const AddArticle = () => {
         dispatch({
             ...state,
             type: actionTypes.UPDATE_RELEASEMODE,
-            article_status: 1
+            article_status: state.article_status == 3 ? 1:state.article_status
         })
         dispatch({
             ...state,

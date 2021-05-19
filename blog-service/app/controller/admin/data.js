@@ -144,7 +144,7 @@ class HomeController extends ControllerAdmin {
   async getArticleInfo(){
       const { ctx } = this;
       let obj = ctx.query
-      console.log(`获得查询`,obj )
+      // console.log(`获得查询`,obj )
   
       let sql =
               'SELECT  '+
@@ -154,7 +154,7 @@ class HomeController extends ControllerAdmin {
                 'b.article_status,  '+
                 'b.article_title,  '+
                 'b.article_uuid,  '+
-                'b.releaseTime,  '+
+                "DATE_FORMAT(b.lastUpdateTime,'%Y-%m-%d %H:%i:%s' ) as lastUpdateTime , "+
                 'b.video_number,  '+
                 'b.view_count,  '+
                 'b.tag_uuid   '+
@@ -164,7 +164,8 @@ class HomeController extends ControllerAdmin {
                 'blog_user u   '+
               'WHERE  '+
                 'u.user_uuid = b.article_authorUuid   '+
-                'AND t.type_uuid = b.type_uuid   '
+                'AND t.type_uuid = b.type_uuid   '+
+                'AND b.article_status !=0  '
         if (obj.article_title != '') {
            sql += " AND b.article_title LIKE '%"+obj.article_title+"%'"
         }
@@ -173,11 +174,48 @@ class HomeController extends ControllerAdmin {
         }
         if (obj.startTime !='' && obj.endTime !='') {
            sql += "  AND DATE( b.releaseTime ) BETWEEN '"+obj.startTime+"'  AND '"+obj.endTime+"'"
-        }       
+        }    
+        sql += ' ORDER BY b.lastUpdateTime DESC '   
   
       console.log(`sql:=条件查询 文章=>`,sql )
       const data = await this.app.mysql.query(sql)
       ctx.body = {data:data}
+  }
+
+  // 删除文章  deleteArticle
+  async deleteArticle(){
+    const { ctx } = this;
+    let article_uuid = ctx.query.article_uuid
+
+    let sql = 
+    'UPDATE blog_article  '+
+    'SET lastUpdateTime = SYSDATE( ), '+
+    'article_status = 0  '+
+    'WHERE '+
+      "article_uuid = '"+ article_uuid+"' "
+
+    console.log(`sql:=删除文章=>`,sql )
+    const data = await this.app.mysql.query(sql)
+    ctx.body = {data:data}
+    }
+
+
+    //修改文章标题 
+  async updateTitleByUuid(){
+    const { ctx } = this;
+    let obj = ctx.query
+
+    let sql = 
+    'UPDATE blog_article  '+
+    'SET lastUpdateTime = SYSDATE( ), '+
+    'article_status = 5 , '+
+    "article_title =   '"+obj.article_title+"' "+
+    'WHERE '+
+      "article_uuid = '"+ obj.article_uuid+"' "
+
+    console.log(`sql:=修改文章标题 =>`,sql )
+    const data = await this.app.mysql.query(sql)
+    ctx.body = {data:data}
   }
 
 }

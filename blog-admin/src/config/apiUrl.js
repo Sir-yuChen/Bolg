@@ -16,6 +16,8 @@ let servicePath = {
     getNoticeInfo:'getNoticeInfo',
     getNumbByType:'getNumbByType',
     getTypeInfo:'getTypeInfo',
-    getArticleInfo:'getArticleInfo'
+    getArticleInfo:'getArticleInfo',
+    deleteArticle:'deleteArticle',
+    updateTitleByUuid:'updateTitleByUuid',
 }   
 export default servicePath;

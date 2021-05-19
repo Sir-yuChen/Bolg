@@ -48,3 +48,12 @@ export const getArticleInfo =(params) =>{
         }
       })
 }
+
+//删除文章 
+export const deleteArticle = (article_uuid) =>{
+    return http.get(servicePath.deleteArticle+"?article_uuid="+article_uuid)
+}
+//修改文章标题 
+export const updateTitleByUuid = (params) =>{
+    return http.get(servicePath.updateTitleByUuid,{params})
+}
