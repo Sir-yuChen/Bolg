@@ -19,5 +19,9 @@ let servicePath = {
     getArticleInfo:'getArticleInfo',
     deleteArticle:'deleteArticle',
     updateTitleByUuid:'updateTitleByUuid',
+    getArticleType:'getArticleType',
+    getTagInfo:'getTagInfo',
+    updateTagColor:'updateTagColor',
+    getIconInfo:'getIconInfo',
 }   
 export default servicePath;

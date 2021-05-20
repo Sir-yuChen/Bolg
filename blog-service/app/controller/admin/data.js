@@ -217,6 +217,57 @@ class HomeController extends ControllerAdmin {
     const data = await this.app.mysql.query(sql)
     ctx.body = {data:data}
   }
+  
+  
+  //获得文章类型
+  async getArticleType(){
+    const { ctx } = this;
+
+    let sql = 'SELECT * FROM blog_article_type '
+
+    console.log(`sql:=获得文章类型 =>`,sql )
+    const data = await this.app.mysql.query(sql)
+    ctx.body = {data:data}
+  }
+
+  
+ 
+  //获得标签
+   async getTagInfo(){
+    const { ctx } = this;
+
+    let sql = 'SELECT * FROM blog_tag'
+
+    console.log(`sql:=获得标签集合 =>`,sql )
+    const data = await this.app.mysql.query(sql)
+    ctx.body = {data:data}
+  }
+
+  //修改标签颜色
+  async updateTagColor(){
+    const { ctx } = this;
+    const obj = ctx.query
+    console.log(`修改颜色参数：`, obj)
+    
+    let sql = 'UPDATE blog_tag   '+
+              "SET tag_color = '"+obj.color+"' "+
+              'WHERE '+
+                "tag_uuid = '"+obj.tag_uuid+"' "
+
+    console.log(`sql:=修改标签颜色 =>`,sql )
+    const data = await this.app.mysql.query(sql)
+    ctx.body = {data:data}
+  }
+    //获得图标
+  async getIconInfo(){
+    const { ctx } = this;
+  
+    let sql = 'SELECT * FROM blog_icon '
+
+    console.log(`sql:=获得图标 =>`,sql )
+    const data = await this.app.mysql.query(sql)
+    ctx.body = {data:data}
+  }
 
 }
 module.exports = HomeController;

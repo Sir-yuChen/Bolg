@@ -9,6 +9,10 @@ module.exports = app => {
     router.get('/admin/getTypeInfo',controller.admin.data.getTypeInfo);
     router.get('/admin/getArticleInfo',controller.admin.data.getArticleInfo);
     router.get('/admin/deleteArticle',controller.admin.data.deleteArticle);
-    router.get('/admin/updateTitleByUuid',controller.admin.data.updateTitleByUuid)
+    router.get('/admin/updateTitleByUuid',controller.admin.data.updateTitleByUuid);
+    router.get('/admin/getArticleType',controller.admin.data.getArticleType);
+    router.get('/admin/getTagInfo',controller.admin.data.getTagInfo);
+    router.get('/admin/updateTagColor',controller.admin.data.updateTagColor);
+    router.get('/admin/getIconInfo',controller.admin.data.getIconInfo);
   };
   

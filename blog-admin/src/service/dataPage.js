@@ -57,3 +57,30 @@ export const deleteArticle = (article_uuid) =>{
 export const updateTitleByUuid = (params) =>{
     return http.get(servicePath.updateTitleByUuid,{params})
 }
+
+
+//获得文章类型
+export const getArticleType = () =>{
+    return http.get(servicePath.getArticleType)
+}
+
+//获得标签
+export const getTagInfo = () =>{
+    return http.get(servicePath.getTagInfo)
+}
+
+//修改标签颜色
+export const updateTagColor =(params)=>{
+    return http.get(servicePath.updateTagColor,{
+        params,
+        headers: {
+          errorAlert: false,
+          cancelRequest: false
+        }
+      })
+}
+
+//获得图标
+export const getIconInfo = () =>{
+    return http.get(servicePath.getIconInfo)
+}
