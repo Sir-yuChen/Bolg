@@ -11,7 +11,7 @@
  Target Server Version : 80020
  File Encoding         : 65001
 
- Date: 19/05/2021 18:11:48
+ Date: 20/05/2021 18:05:15
 */
 
 SET NAMES utf8mb4;
@@ -46,10 +46,10 @@ INSERT INTO `blog_admin_menus` VALUES (4, 'sf54re653g1355rt53sfd13rq45', '基本
 INSERT INTO `blog_admin_menus` VALUES (5, 'd5s4f5d15f4dxf4a534534f', '权限管理', '/power/Index', '0', 0, 1, '2021-05-13 10:06:07', '2021-05-11 15:29:00', 5, NULL);
 INSERT INTO `blog_admin_menus` VALUES (6, 's4f6f45ds6544sf54sd3', '文章管理', '/workbench/ArticleManage', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-18 15:17:49', '2021-05-11 15:29:16', 1, NULL);
 INSERT INTO `blog_admin_menus` VALUES (7, '54dger5sd34f5d34g56sr3df', '文章类别管理', '/workbench/ArticleType', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-19 17:32:31', '2021-05-11 15:30:29', 2, NULL);
-INSERT INTO `blog_admin_menus` VALUES (8, '5e5as5f1d654d3sdf864', '个人信息管理', '/index/personalDetails', 'sf54re653g1355rt53sfd13rq45', 1, 1, '2021-05-12 15:10:03', '2021-05-11 15:40:54', 1, NULL);
+INSERT INTO `blog_admin_menus` VALUES (8, '5e5as5f1d654d3sdf864', '个人信息管理', '/index/PersonalDetails', 'sf54re653g1355rt53sfd13rq45', 1, 1, '2021-05-20 14:43:56', '2021-05-11 15:40:54', 1, NULL);
 INSERT INTO `blog_admin_menus` VALUES (9, 's5fa34d155s34f1', '分配权限', '/index/allot', 'd5s4f5d15f4dxf4a534534f', 1, 1, '2021-05-12 15:10:08', '2021-05-11 15:41:28', 1, NULL);
-INSERT INTO `blog_admin_menus` VALUES (10, 'fsd5a5d4sfsd5f45sda4ff4sd55', '标签管理', '/workbench/tag', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-18 15:06:08', '2021-05-12 14:32:30', 3, NULL);
-INSERT INTO `blog_admin_menus` VALUES (11, 'sf67ea64868refsd51t8re65as3df', 'Icon图标管理', '/workbench/icon', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-18 15:06:15', '2021-05-12 14:33:24', 4, NULL);
+INSERT INTO `blog_admin_menus` VALUES (10, 'fsd5a5d4sfsd5f45sda4ff4sd55', '标签管理', '/workbench/TagComp', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-20 11:03:30', '2021-05-12 14:32:30', 3, NULL);
+INSERT INTO `blog_admin_menus` VALUES (11, 'sf67ea64868refsd51t8re65as3df', 'Icon图标管理', '/workbench/IconComp', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-20 14:15:25', '2021-05-12 14:33:24', 4, NULL);
 INSERT INTO `blog_admin_menus` VALUES (12, '5s7afesda48f65s7a4fe6s54', '学习路线管理', '/workbench/learnPath', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-18 15:06:20', '2021-05-12 14:34:16', 5, NULL);
 INSERT INTO `blog_admin_menus` VALUES (13, '53fs3d1r6s5d312fd5ds', '评论管理', '/workbench/discuss', 'd54fsd4e23sd5f4efd2s', 1, 1, '2021-05-18 15:06:26', '2021-05-12 14:34:47', 6, NULL);
 INSERT INTO `blog_admin_menus` VALUES (14, '8f7eas46d65ds4f18e64e864asd', '账户密码修改', '/index/passing', 'sf54re653g1355rt53sfd13rq45', 1, 1, '2021-05-12 15:10:22', '2021-05-12 14:35:39', 2, NULL);
@@ -77,7 +77,7 @@ CREATE TABLE `blog_article`  (
   `article_path` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '文章地址',
   `article_cover` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '封面地址',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 75 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of blog_article
@@ -142,7 +142,7 @@ CREATE TABLE `blog_icon`  (
   `site` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标位置',
   `icon_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标对应文本',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of blog_icon
@@ -240,14 +240,14 @@ CREATE TABLE `blog_tag`  (
 -- ----------------------------
 -- Records of blog_tag
 -- ----------------------------
-INSERT INTO `blog_tag` VALUES (1, 's5df415413fd561f5s', 'magenta', 1, NULL, '2021-04-27', NULL, '程序员', 'author', NULL);
-INSERT INTO `blog_tag` VALUES (2, '54ds5fd456dsf', 'red', 1, NULL, '2021-04-27', NULL, 'JAVA', 'author', '4521452s5f252f45');
-INSERT INTO `blog_tag` VALUES (3, '12s2ds41s41f24d', 'gold', 1, NULL, '2021-04-15', NULL, '免费视频719 集', 'author', NULL);
-INSERT INTO `blog_tag` VALUES (4, '65f4ds5f2sd4fd54', 'green', 1, NULL, '2021-04-27', NULL, '12年经验', 'author', NULL);
-INSERT INTO `blog_tag` VALUES (5, '54ds6f4fsd54s5', 'orange', 1, NULL, '2021-04-23', NULL, '前端', 'author', '4521452s5f252f45');
-INSERT INTO `blog_tag` VALUES (6, '54sd53f4rf5d54dfd5', 'blue', 1, NULL, '2021-04-28', NULL, '学习路线', NULL, 's564fd5f54s5gr4d5f2fd1');
-INSERT INTO `blog_tag` VALUES (7, 's4ds4f14d43g14df1', 'blue', 1, NULL, '2021-04-08', NULL, '学习之路', NULL, '45ad14f1e4d1s4xssd');
-INSERT INTO `blog_tag` VALUES (8, '8f7ds46f64esd5a444r', 'green', 1, NULL, '2021-04-28', NULL, '视频教程', NULL, '45ad14f1e4d1s4xssd');
+INSERT INTO `blog_tag` VALUES (1, 's5df415413fd561f5s', '#050505', 1, NULL, '2021-04-27', NULL, '程序员', 'author', NULL);
+INSERT INTO `blog_tag` VALUES (2, '54ds5fd456dsf', '#108ee9', 1, NULL, '2021-04-27', NULL, 'JAVA', 'author', '4521452s5f252f45');
+INSERT INTO `blog_tag` VALUES (3, '12s2ds41s41f24d', '#4a5155', 1, NULL, '2021-04-15', NULL, '免费视频719 集', 'author', NULL);
+INSERT INTO `blog_tag` VALUES (4, '65f4ds5f2sd4fd54', '#cd201f', 1, NULL, '2021-04-27', NULL, '12年经验', 'author', NULL);
+INSERT INTO `blog_tag` VALUES (5, '54ds6f4fsd54s5', '#108ee9', 1, NULL, '2021-04-23', NULL, '前端', 'author', '4521452s5f252f45');
+INSERT INTO `blog_tag` VALUES (6, '54sd53f4rf5d54dfd5', '#87d068', 1, NULL, '2021-04-28', NULL, '学习路线', NULL, 's564fd5f54s5gr4d5f2fd1');
+INSERT INTO `blog_tag` VALUES (7, 's4ds4f14d43g14df1', '#87d068', 1, NULL, '2021-04-08', NULL, '学习之路', NULL, '45ad14f1e4d1s4xssd');
+INSERT INTO `blog_tag` VALUES (8, '8f7ds46f64esd5a444r', '#f50', 1, NULL, '2021-04-28', NULL, '视频教程', NULL, '45ad14f1e4d1s4xssd');
 
 -- ----------------------------
 -- Table structure for blog_user
